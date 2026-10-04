@@ -4,6 +4,33 @@ import type { Product } from "./types";
 // Prijzen zijn de europrijzen uit de shop van het merk.
 export const products: Product[] = [
   {
+    id: "no-maintenance-baggy-japanese-denim-light-wash-painter",
+    name: "Baggy Painter Denim",
+    colorName: "Light-Wash Painter",
+    brand: "no-maintenance",
+    category: "jeans",
+    price: 232.95,
+    images: [
+      "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/NewStandardEcomm_67_copy_3db1faf9-b7f5-4816-af5e-727820fd231e.jpg",
+      "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BLUEPAINTER_FRONT_copy_1.jpg",
+      "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/NewStandardEcomm_68_copy_7081e1cf-f734-4be3-8808-57a04a680bd6.jpg",
+      "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/FRONTPAINT.jpg",
+      "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BLUEPAINTERDENIM_BACK_5e8ff2ae-413c-446d-84f7-e025157b5fc5.jpg",
+      "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BLUEPAINTERDENIMBACKPOCKETT.jpg",
+      "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BACKWHISKER.jpg",
+      "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BLUEPAINTERDENIMSELVEDGE.jpg",
+    ],
+    sizes: ["26", "28", "30", "32", "34", "36", "38"],
+    soldOutSizes: ["38"],
+    colors: ["light-blue"],
+    description:
+      "14 oz Japanese selvedge denim in a relaxed, baggy fit with a light stone enzyme wash. Hand-applied paint splatters in black, white and grey give every pair its own surface. Whiskering, honeycombs behind the knees and rectangular back pockets with the signature arcuate stitch. Inspired by vintage workwear.",
+    url: "https://nomaintenance.us/products/minimalist-painter-denim",
+    addedAt: "2026-10-04T20:00:00+02:00",
+    featured: true,
+    tags: ["selvedge", "denim", "japanese denim", "painter", "baggy", "light wash", "paint splatter"],
+  },
+  {
     id: "stellar-studios-ripped-selvedge-jacket",
     name: "Ripped Selvedge Jacket",
     brand: "stellar-studios",

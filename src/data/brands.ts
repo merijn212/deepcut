@@ -2,6 +2,15 @@ import type { Brand } from "./types";
 
 export const brands: Brand[] = [
   {
+    id: "no-maintenance",
+    name: "No Maintenance",
+    instagram: "nomaintenance",
+    website: "https://nomaintenance.us",
+    country: "US",
+    description:
+      "Los Angeles label founded by two former archive curators: Japanese selvedge denim, leather jackets and workwear that mix classic Americana with Japanese craft.",
+  },
+  {
     id: "stellar-studios",
     name: "Stellar Studios",
     instagram: "stellarstudios.dk",

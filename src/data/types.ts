@@ -42,7 +42,10 @@ export interface Product {
   description?: string;
   /** Link naar het item in de shop van het merk */
   url?: string;
-  /** Datum waarop je het item hebt toegevoegd (YYYY-MM-DD), bepaalt "Nieuw" */
+  /**
+   * Datum waarop je het item hebt toegevoegd (YYYY-MM-DD), bepaalt "Nieuw". Mag ook met tijd
+   * (bijv. "2026-10-04T20:00:00+02:00"), zodat het boven eerdere items van die dag komt.
+   */
   addedAt: string;
   /**
    * Releasemoment als het item nog moet droppen, bijv. "2026-10-18T18:00:00+02:00".

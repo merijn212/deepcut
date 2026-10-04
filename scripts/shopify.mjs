@@ -64,11 +64,56 @@ function productLink(url) {
   return /\/products\/[^/]+$/.test(clean.pathname) ? clean : undefined;
 }
 
+const dataOrigins = new Map();
+
+/**
+ * Sommige merken draaien een eigen (headless) storefront op hun domein, bijv. Shopify
+ * Hydrogen. Daar bestaat `<url>.js` niet, maar de pagina noemt wel het eigen
+ * `<shop>.myshopify.com`-adres, waar de productdata gewoon staat. Geeft dat adres terug,
+ * of undefined. Eén keer per shop opgezocht.
+ */
+async function myshopifyOrigin(link) {
+  if (!dataOrigins.has(link.origin)) {
+    dataOrigins.set(
+      link.origin,
+      (async () => {
+        try {
+          const response = await fetch(link, {
+            headers: { "user-agent": USER_AGENT },
+            signal: AbortSignal.timeout(20_000),
+          });
+          if (!response.ok) return undefined;
+          const match = /\b([a-z0-9][a-z0-9-]*)\.myshopify\.com\b/.exec(await response.text());
+          const origin = match && `https://${match[1]}.myshopify.com`;
+          return origin && origin !== link.origin ? origin : undefined;
+        } catch {
+          return undefined;
+        }
+      })(),
+    );
+  }
+  return dataOrigins.get(link.origin);
+}
+
+/** De productlink op het adres waar de Shopify-data staat (zelfde pad, zonder taal/regio). */
+function onOrigin(link, origin) {
+  return new URL(link.pathname.slice(link.pathname.lastIndexOf("/products/")), origin);
+}
+
 export async function fetchShopifyProduct(url) {
   const clean = productLink(url);
   if (!clean) return { skip: "geen Shopify-productlink (/products/...)" };
-  clean.pathname += ".js";
-  const result = await fetchJson(clean);
+  const jsUrl = new URL(clean);
+  jsUrl.pathname += ".js";
+  let result = await fetchJson(jsUrl);
+  if (result.error || !Array.isArray(result.data.variants)) {
+    const origin = await myshopifyOrigin(clean);
+    if (origin) {
+      const fallback = onOrigin(jsUrl, origin);
+      const retry = await fetchJson(fallback);
+      if (!retry.error && Array.isArray(retry.data.variants)) return { data: retry.data, origin };
+    }
+  }
   if (result.error) return result;
   if (!Array.isArray(result.data.variants)) return { skip: "geen Shopify-productdata" };
   return { data: result.data };
@@ -153,9 +198,12 @@ function titleCase(value) {
   return value.toLowerCase().replace(/(^|[\s/-])(\p{L})/gu, (_, sep, char) => sep + char.toUpperCase());
 }
 
-/** "Fatigue Jacket - Sand" wordt { base: "Fatigue Jacket", color: "Sand" }. */
+/**
+ * "Fatigue Jacket - Sand" wordt { base: "Fatigue Jacket", color: "Sand" }. Een streepje
+ * zonder spaties hoort bij de kleur: "Baggy Denim - Light-Wash Painter".
+ */
 export function splitColorTitle(title) {
-  const match = /^(.+?)\s+[-–—|/]\s+([^-–—|/]+)$/.exec(title.trim());
+  const match = /^(.+?)\s+[-–—|/]\s+((?:(?!\s[-–—|/]\s).)+)$/.exec(title.trim());
   return match ? { base: match[1].trim(), color: match[2].trim() } : undefined;
 }
 
@@ -235,11 +283,21 @@ function colorwaysFromOption(url, data, colorIndex) {
   return { current, others: colorways };
 }
 
+/** Laagste prijs van een product uit /products.json, in centen zoals in `<url>.js`. */
+function lowestPrice(product) {
+  const prices = (product.variants ?? []).map((variant) => Math.round(Number(variant.price) * 100));
+  return prices.length ? Math.min(...prices) : undefined;
+}
+
 async function colorwaysFromSiblings(url, data) {
   const own = splitColorTitle(data.title ?? "");
   if (!own) return undefined;
   const link = productLink(url);
-  const products = await shopProducts(link.origin);
+  let products = await shopProducts(link.origin);
+  if (!products) {
+    const origin = await myshopifyOrigin(link);
+    if (origin) products = await shopProducts(origin);
+  }
   if (!products) return undefined;
 
   const prefix = link.pathname.slice(0, link.pathname.lastIndexOf("/products/"));
@@ -256,6 +314,9 @@ async function colorwaysFromSiblings(url, data) {
     if (product.handle === data.handle) continue;
     const parts = splitColorTitle(product.title ?? "");
     if (!parts || parts.base.toLowerCase() !== own.base.toLowerCase()) continue;
+    // Een kleur heeft dezelfde prijs als het item (zie Colorway in src/data/types.ts). Kost
+    // een "kleur" meer of minder, dan is het eigenlijk een ander item; die slaan we over.
+    if (lowestPrice(product) !== data.price) continue;
     others.push(toColorway(product, parts.color));
   }
   if (others.length === 0) return undefined;
