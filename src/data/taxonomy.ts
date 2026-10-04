@@ -29,6 +29,7 @@ export const COLORS = {
   beige: { label: "Beige", swatch: "#cdb994" },
   bruin: { label: "Bruin", swatch: "#6b4a32" },
   groen: { label: "Groen", swatch: "#475b3c" },
+  lichtblauw: { label: "Lichtblauw", swatch: "#a9c6e3" },
   blauw: { label: "Blauw", swatch: "#2c4f8f" },
   navy: { label: "Navy", swatch: "#1d2640" },
   rood: { label: "Rood", swatch: "#b0261e" },
