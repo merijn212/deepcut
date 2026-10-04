@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import type { CatalogItem } from "@/data/types";
 import { getCategoryLabel } from "@/data/taxonomy";
+import { colorCountLabel } from "@/lib/colorways";
 import { formatDateTime } from "@/lib/format";
 import { getStatus, isNew, isOnSale } from "@/lib/status";
 import { cn } from "@/lib/cn";
@@ -12,6 +13,7 @@ import { ProductImage } from "./product-image";
 export function ProductCard({ item, now }: { item: CatalogItem; now: number }) {
   const status = getStatus(item, now);
   const [first, second] = item.images ?? [];
+  const colorCount = colorCountLabel(item);
 
   return (
     <Link href={`/product/${item.id}`} className="group block">
@@ -46,6 +48,7 @@ export function ProductCard({ item, now }: { item: CatalogItem; now: number }) {
           <p className="truncate text-sm font-medium underline-offset-4 group-hover:underline">
             {item.name}
           </p>
+          {colorCount && <p className="mt-0.5 truncate text-xs text-muted">{colorCount}</p>}
           {status === "upcoming" && item.releaseAt && (
             <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wider text-accent">
               Drops {formatDateTime(item.releaseAt)}

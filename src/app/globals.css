@@ -6,6 +6,8 @@
   --muted: #6b6b6b;
   --line: #e0e0de;
   --tile: #ebebea;
+  /* Achtergrond achter productfoto's; blijft licht, ook in dark mode (zie ProductImage). */
+  --frame: #ecece9;
   --accent: #2f3cff;
   --accent-fg: #ffffff;
 }
@@ -17,6 +19,7 @@
     --muted: #8f8f8f;
     --line: #262626;
     --tile: #171717;
+    --frame: #d9d9d6;
     --accent: #7380ff;
     --accent-fg: #0b0b0b;
   }
@@ -28,6 +31,7 @@
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-tile: var(--tile);
+  --color-frame: var(--frame);
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
   --font-sans: var(--font-geist-sans);
