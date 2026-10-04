@@ -50,7 +50,7 @@ export default async function BrandPage({ params }: PageProps<"/brands/[id]">) {
         {brand.country && (
           <p className="font-mono text-xs uppercase tracking-wider text-muted">{brand.country}</p>
         )}
-        <h1 className="mt-1 font-display text-6xl leading-[0.9] tracking-tight sm:text-8xl">
+        <h1 className="mt-1 text-5xl font-semibold leading-[0.9] tracking-[-0.04em] sm:text-7xl">
           {brand.name}
         </h1>
         {brand.description && <p className="mt-5 max-w-2xl text-lg text-muted">{brand.description}</p>}
@@ -60,7 +60,7 @@ export default async function BrandPage({ params }: PageProps<"/brands/[id]">) {
               href={instagramUrl(brand.instagram)}
               target="_blank"
               rel="noreferrer"
-              className="bg-fg px-5 py-3 font-mono text-xs uppercase tracking-wider text-bg hover:opacity-85"
+              className="bg-fg rounded-full px-6 py-3 text-sm font-medium text-bg hover:opacity-85"
             >
               @{brand.instagram} ↗
             </a>
@@ -70,14 +70,14 @@ export default async function BrandPage({ params }: PageProps<"/brands/[id]">) {
               href={brand.website}
               target="_blank"
               rel="noreferrer"
-              className="border border-fg px-5 py-3 font-mono text-xs uppercase tracking-wider hover:bg-fg hover:text-bg"
+              className="border border-fg rounded-full px-6 py-3 text-sm font-medium hover:bg-fg hover:text-bg"
             >
               Store ↗
             </a>
           )}
           <Link
             href={`/shop?brand=${brand.id}`}
-            className="border border-line px-5 py-3 font-mono text-xs uppercase tracking-wider hover:border-fg"
+            className="border border-line rounded-full px-6 py-3 text-sm font-medium hover:border-fg"
           >
             Filter in shop
           </Link>

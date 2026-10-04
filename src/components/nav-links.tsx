@@ -30,8 +30,10 @@ export function NavLinks() {
           key={link.href}
           href={link.href}
           className={cn(
-            "shrink-0 px-2 py-1 font-mono text-xs uppercase tracking-wider transition-colors",
-            isActive(link.href) ? "bg-fg text-bg" : "hover:bg-tile",
+            "shrink-0 px-2 py-1 text-sm font-medium transition-colors",
+            isActive(link.href)
+              ? "underline decoration-2 underline-offset-[6px]"
+              : "text-muted hover:text-fg",
           )}
         >
           {link.label}
@@ -49,7 +51,7 @@ export function NavLinksFallback() {
         <Link
           key={link.href}
           href={link.href}
-          className="shrink-0 px-2 py-1 font-mono text-xs uppercase tracking-wider hover:bg-tile"
+          className="shrink-0 px-2 py-1 text-sm font-medium text-muted hover:text-fg"
         >
           {link.label}
         </Link>

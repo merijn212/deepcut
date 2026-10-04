@@ -12,7 +12,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Drops",
-  description: "Upcoming drops from niche Instagram brands, with a live countdown.",
+  description: "Upcoming releases from independent labels, with a live countdown.",
 };
 
 export default function DropsPage() {
@@ -22,7 +22,7 @@ export default function DropsPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10">
-      <h1 className="font-display text-5xl leading-none tracking-tight sm:text-7xl">Drops</h1>
+      <h1 className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Drops</h1>
       <p className="mt-2 max-w-xl text-muted">
         What’s dropping soon, with a live countdown. Times in Amsterdam time (CET/CEST).
       </p>

@@ -80,14 +80,14 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
           </div>
           <Link
             href={`/brands/${brand.id}`}
-            className="mt-3 inline-block font-mono text-xs uppercase tracking-wider text-accent hover:underline underline-offset-4"
+            className="mt-3 inline-block font-mono text-xs uppercase tracking-wider text-muted hover:text-fg"
           >
             {brand.name}
           </Link>
-          <h1 className="mt-1 font-display text-4xl leading-[0.95] tracking-tight sm:text-6xl">
+          <h1 className="mt-1 text-3xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-4xl">
             {item.name}
           </h1>
-          <Price price={item.price} compareAtPrice={item.compareAtPrice} className="mt-4 block border-y border-line py-3 text-xl" />
+          <Price price={item.price} compareAtPrice={item.compareAtPrice} className="mt-4 block text-lg" />
 
           {status === "upcoming" && item.releaseAt && (
             <div className="mt-6 border border-accent p-4">
@@ -109,8 +109,8 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
                     <li
                       key={size}
                       className={cn(
-                        "min-w-11 border border-fg px-2.5 py-1.5 text-center font-mono text-xs uppercase",
-                        out && "border-line text-muted line-through",
+                        "min-w-11 border border-line px-2.5 py-1.5 text-center font-mono text-xs uppercase",
+                        out && "text-muted line-through",
                       )}
                     >
                       {size}
@@ -146,7 +146,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
                 href={shopUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-fg px-5 py-3.5 text-center font-mono text-xs uppercase tracking-wider text-bg transition-colors hover:bg-accent hover:text-accent-fg"
+                className="bg-fg rounded-full px-6 py-3.5 text-center text-sm font-medium text-bg hover:opacity-85"
               >
                 Shop at {brand.name} ↗
               </a>
@@ -154,13 +154,13 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
             {status === "upcoming" && drop && (
               <Link
                 href={`/drops/${drop.id}`}
-                className="bg-accent px-5 py-3.5 text-center font-mono text-xs uppercase tracking-wider text-accent-fg hover:opacity-85"
+                className="bg-accent rounded-full px-6 py-3.5 text-center text-sm font-medium text-accent-fg hover:opacity-85"
               >
                 View the drop
               </Link>
             )}
             {status === "sold-out" && (
-              <span className="border border-line px-5 py-3.5 text-center font-mono text-xs uppercase tracking-wider text-muted">
+              <span className="border border-line rounded-full px-6 py-3.5 text-center text-sm font-medium text-muted">
                 Sold out
               </span>
             )}
@@ -169,7 +169,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
                 href={instagramUrl(brand.instagram)}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-fg px-5 py-3.5 text-center font-mono text-xs uppercase tracking-wider hover:bg-fg hover:text-bg"
+                className="border border-fg rounded-full px-6 py-3.5 text-center text-sm font-medium hover:bg-fg hover:text-bg"
               >
                 {status === "upcoming" ? "Follow" : "View"} @{brand.instagram} on Instagram ↗
               </a>

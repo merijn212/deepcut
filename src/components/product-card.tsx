@@ -21,7 +21,7 @@ export function ProductCard({ item, now }: { item: CatalogItem; now: number }) {
           alt={`${item.brandName} ${item.name}`}
           label={getCategoryLabel(item.category)}
           className={cn(
-            "transition duration-700 group-hover:scale-[1.03]",
+            "transition duration-500",
             status === "sold-out" && "opacity-60",
             second && "group-hover:opacity-0",
           )}
@@ -31,14 +31,14 @@ export function ProductCard({ item, now }: { item: CatalogItem; now: number }) {
             src={second}
             alt=""
             label=""
-            className="opacity-0 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-100"
+            className="opacity-0 transition duration-500 group-hover:opacity-100"
           />
         )}
         <div className="absolute left-2 top-2 flex flex-wrap gap-1">
           <ItemBadges status={status} isNew={isNew(item, now)} onSale={isOnSale(item)} />
         </div>
       </div>
-      <div className="mt-3 flex items-start justify-between gap-3 border-t border-line pt-2.5 transition-colors group-hover:border-fg">
+      <div className="mt-3 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="truncate font-mono text-[11px] uppercase tracking-wider text-muted">
             {item.brandName}

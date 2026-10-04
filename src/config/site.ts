@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Deepcut",
-  tagline: "Deep cuts from Instagram. The labels your feed hasn't found yet.",
+  tagline: "Clothing from small, independent labels, brought together in one place.",
   description:
-    "A curated shop for niche Instagram clothing brands: new arrivals, upcoming drops, and everything filterable by type, brand, size and colour.",
+    "Clothing from small, independent labels: new releases, upcoming drops, and every piece filterable by type, brand, size and colour.",
   // Je eigen Instagram-handle (zonder @). Laat leeg om de link te verbergen.
   instagram: "",
   locale: "en-GB",

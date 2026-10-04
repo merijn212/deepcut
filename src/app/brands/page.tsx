@@ -7,7 +7,7 @@ import { getStatus } from "@/lib/status";
 
 export const metadata: Metadata = {
   title: "Brands",
-  description: "Every niche Instagram brand in the shop.",
+  description: "Every independent label in the shop, with links to their own stores.",
 };
 
 export default function BrandsPage() {
@@ -17,7 +17,7 @@ export default function BrandsPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10">
-      <h1 className="font-display text-5xl leading-none tracking-tight sm:text-7xl">Brands</h1>
+      <h1 className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Brands</h1>
       <p className="mt-2 text-muted">{brands.length} {brands.length === 1 ? "label" : "labels"}, handpicked.</p>
 
       <ul className="mt-10 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
@@ -29,7 +29,7 @@ export default function BrandsPage() {
             <li key={brand.id} className="border-b border-r border-line">
               <Link href={`/brands/${brand.id}`} className="group flex h-full flex-col p-5 hover:bg-tile">
                 <div className="flex items-start justify-between gap-3">
-                  <h2 className="font-display text-3xl tracking-tight underline-offset-4 group-hover:underline">
+                  <h2 className="text-2xl font-semibold tracking-[-0.04em] underline-offset-4 group-hover:underline">
                     {brand.name}
                   </h2>
                   {brand.country && (
