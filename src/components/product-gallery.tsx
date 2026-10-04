@@ -17,8 +17,8 @@ export function ProductGallery({
   const [active, setActive] = useState(0);
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="relative aspect-[4/5] overflow-hidden bg-tile">
+    <div className="flex flex-col gap-3">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-tile">
         <ProductImage
           src={images[active]}
           alt={alt}
@@ -37,7 +37,7 @@ export function ProductGallery({
               aria-label={`Photo ${i + 1}`}
               aria-current={i === active}
               className={cn(
-                "relative aspect-[4/5] overflow-hidden bg-tile ring-offset-2 ring-offset-bg",
+                "relative aspect-[4/5] overflow-hidden rounded-lg bg-tile ring-offset-2 ring-offset-bg transition-opacity",
                 i === active ? "ring-1 ring-fg" : "opacity-70 hover:opacity-100",
               )}
             >
