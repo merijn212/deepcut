@@ -78,14 +78,14 @@ export default function HomePage() {
 
         {heroItem && (
           <Link href={`/product/${heroItem.id}`} className="group relative block">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-tile lg:aspect-[5/6]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-tile lg:aspect-[5/6]">
               <ProductImage
                 src={heroItem.images?.[0]}
                 alt={`${heroItem.brandName} ${heroItem.name}`}
                 label={getCategoryLabel(heroItem.category)}
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 preload
-                className="transition duration-700 group-hover:scale-[1.02]"
+                className="transition duration-700 ease-out group-hover:scale-[1.02]"
               />
             </div>
             <div className="mt-3 flex items-baseline justify-between gap-3 text-sm">

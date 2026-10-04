@@ -32,7 +32,7 @@ function ShopSkeleton() {
       </div>
       <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-5 md:grid-cols-3 lg:ml-[260px] xl:grid-cols-4">
         {Array.from({ length: 8 }, (_, i) => (
-          <div key={i} className="aspect-[4/5] bg-tile" />
+          <div key={i} className="aspect-[4/5] rounded-xl bg-tile" />
         ))}
       </div>
     </div>

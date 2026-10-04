@@ -6,11 +6,13 @@ import { cn } from "@/lib/cn";
  * Productfoto in een vast kader, of een nette placeholder zolang er nog geen foto is.
  *
  * Merken fotograferen allemaal anders (los op wit, op een grijze studiomuur, buiten). Om
- * dat gelijk te trekken staat elke foto op dezelfde lichte achtergrond met dezelfde rand
- * eromheen (padding in procenten van de breedte, dus overal even dik), wordt hij nooit
- * bijgesneden (object-contain) en valt een witte achtergrond weg in het kader
- * (mix-blend-multiply). De achtergrond zit op dit element zelf, zodat multiply ook werkt
- * als `className` een opacity of transform toevoegt.
+ * dat gelijk te trekken staat elke foto op dezelfde zachte, licht verlopende achtergrond,
+ * in een vlak met dezelfde verhouding als het kader (inset in procenten), zodat er overal
+ * evenveel lucht omheen zit. De foto wordt nooit bijgesneden (object-contain), krijgt
+ * afgeronde hoeken die meeschalen met het formaat (cqw) en een witte achtergrond valt weg
+ * in het kader (mix-blend-multiply). De achtergrond zit op dit element zelf, zodat multiply
+ * ook werkt als `className` een opacity of transform toevoegt. Afronding en hover van de
+ * buitenkant regelt de plek waar de foto staat.
  */
 export function ProductImage({
   src,
@@ -29,8 +31,13 @@ export function ProductImage({
 }) {
   if (src) {
     return (
-      <div className={cn("absolute inset-0 bg-frame p-[7%]", className)}>
-        <div className="relative size-full">
+      <div
+        className={cn(
+          "@container absolute inset-0 bg-[linear-gradient(to_bottom,var(--frame),var(--frame-2))]",
+          className,
+        )}
+      >
+        <div className="absolute inset-[6%] overflow-hidden rounded-[clamp(2px,1.6cqw,8px)]">
           <Image
             src={src}
             alt={alt}

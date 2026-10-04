@@ -75,7 +75,7 @@ export function ColorPicker() {
               aria-label={`${colorway.name}${colorway.soldOut ? " (sold out)" : ""}`}
               aria-pressed={i === index}
               className={cn(
-                "relative block aspect-[4/5] w-14 overflow-hidden ring-offset-2 ring-offset-bg transition",
+                "relative block aspect-[4/5] w-14 overflow-hidden rounded-md ring-offset-2 ring-offset-bg transition",
                 i === index ? "ring-1 ring-fg" : "hover:ring-1 hover:ring-line",
               )}
             >

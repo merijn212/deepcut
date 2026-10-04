@@ -17,13 +17,13 @@ export function ProductCard({ item, now }: { item: CatalogItem; now: number }) {
 
   return (
     <Link href={`/product/${item.id}`} className="group block">
-      <div className="relative aspect-[4/5] overflow-hidden bg-tile">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-tile">
         <ProductImage
           src={first}
           alt={`${item.brandName} ${item.name}`}
           label={getCategoryLabel(item.category)}
           className={cn(
-            "transition duration-500",
+            "transition duration-700 ease-out group-hover:scale-[1.03]",
             status === "sold-out" && "opacity-60",
             second && "group-hover:opacity-0",
           )}
@@ -33,10 +33,10 @@ export function ProductCard({ item, now }: { item: CatalogItem; now: number }) {
             src={second}
             alt=""
             label=""
-            className="opacity-0 transition duration-500 group-hover:opacity-100"
+            className="opacity-0 transition duration-700 ease-out group-hover:scale-[1.03] group-hover:opacity-100"
           />
         )}
-        <div className="absolute left-2 top-2 flex flex-wrap gap-1">
+        <div className="absolute left-3 top-3 flex flex-wrap gap-1">
           <ItemBadges status={status} isNew={isNew(item, now)} onSale={isOnSale(item)} />
         </div>
       </div>
