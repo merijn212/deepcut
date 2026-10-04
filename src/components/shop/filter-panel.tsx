@@ -51,7 +51,7 @@ export function FilterPanel({
           onClick={onClose}
           className="font-mono text-xs uppercase tracking-wider"
         >
-          Sluiten ✕
+          Close ✕
         </button>
       </div>
 
@@ -68,21 +68,21 @@ export function FilterPanel({
           ))}
         </Group>
 
-        <Group title="Selectie">
+        <Group title="Highlights">
           <Checkbox
-            label="Alleen nieuw"
+            label="New only"
             checked={filters.onlyNew}
             onChange={() => onSet(PARAMS.onlyNew, filters.onlyNew ? undefined : "1")}
           />
           <Checkbox
-            label="Alleen sale"
+            label="Sale only"
             checked={filters.onlySale}
             onChange={() => onSet(PARAMS.onlySale, filters.onlySale ? undefined : "1")}
           />
         </Group>
 
         {options.brands.length > 0 && (
-          <Group title="Merk">
+          <Group title="Brand">
             {options.brands.map((brand) => (
               <Checkbox
                 key={brand.id}
@@ -96,7 +96,7 @@ export function FilterPanel({
         )}
 
         {options.sizes.length > 0 && (
-          <Group title="Maat">
+          <Group title="Size">
             <div className="flex flex-wrap gap-1.5">
               {options.sizes.map((size) => {
                 const checked = filters.sizes.includes(size);
@@ -123,7 +123,7 @@ export function FilterPanel({
         )}
 
         {options.colors.length > 0 && (
-          <Group title="Kleur">
+          <Group title="Colour">
             <div className="flex flex-wrap gap-2">
               {options.colors.map((color) => {
                 const checked = filters.colors.includes(color);
@@ -154,7 +154,7 @@ export function FilterPanel({
           </Group>
         )}
 
-        <Group title="Prijs">
+        <Group title="Price">
           <div className="flex items-center gap-2">
             <PriceInput
               key={`min-${filters.minPrice ?? ""}`}
@@ -179,7 +179,7 @@ export function FilterPanel({
           onClick={onClose}
           className="w-full bg-fg py-3 font-mono text-xs uppercase tracking-wider text-bg"
         >
-          Toon {resultCount} {resultCount === 1 ? "item" : "items"}
+          Show {resultCount} {resultCount === 1 ? "item" : "items"}
         </button>
       </div>
     </aside>

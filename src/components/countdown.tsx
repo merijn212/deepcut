@@ -7,7 +7,7 @@ import { useNow } from "@/lib/use-now";
 export function Countdown({
   to,
   className,
-  endedLabel = "Nu live",
+  endedLabel = "Live now",
 }: {
   to: string;
   className?: string;
@@ -18,7 +18,7 @@ export function Countdown({
 
   return (
     <span className={cn("font-mono tabular-nums", className)}>
-      {now === null ? "--d --u --m --s" : diff > 0 ? formatCountdown(diff) : endedLabel}
+      {now === null ? "--d --h --m --s" : diff > 0 ? formatCountdown(diff) : endedLabel}
     </span>
   );
 }

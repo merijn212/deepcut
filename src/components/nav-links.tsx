@@ -7,19 +7,19 @@ import { cn } from "@/lib/cn";
 
 const links = [
   { href: "/shop", label: "Shop" },
-  { href: "/shop?nieuw=1", label: "Nieuw" },
+  { href: "/shop?new=1", label: "New" },
   { href: "/drops", label: "Drops" },
-  { href: "/merken", label: "Merken" },
+  { href: "/brands", label: "Brands" },
 ];
 
 export function NavLinks() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const onlyNew = searchParams.get("nieuw") === "1";
+  const onlyNew = searchParams.get("new") === "1";
 
   const isActive = (href: string) => {
     if (href === "/shop") return pathname === "/shop" && !onlyNew;
-    if (href === "/shop?nieuw=1") return pathname === "/shop" && onlyNew;
+    if (href === "/shop?new=1") return pathname === "/shop" && onlyNew;
     return pathname.startsWith(href);
   };
 

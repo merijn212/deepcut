@@ -6,7 +6,7 @@ import { getBrands, getCatalog, getRenderTime } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "Alle items van niche Instagram-merken, filterbaar op type, merk, maat, kleur en prijs.",
+  description: "Every item from niche Instagram brands, filterable by type, brand, size, colour and price.",
 };
 
 export default function ShopPage() {

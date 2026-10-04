@@ -12,7 +12,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Drops",
-  description: "Upcoming drops van niche Instagram-merken, met live countdown.",
+  description: "Upcoming drops from niche Instagram brands, with a live countdown.",
 };
 
 export default function DropsPage() {
@@ -24,11 +24,11 @@ export default function DropsPage() {
     <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10">
       <h1 className="text-4xl font-black uppercase tracking-tighter sm:text-5xl">Drops</h1>
       <p className="mt-2 max-w-xl text-muted">
-        Wat er binnenkort uitkomt, met countdown. Tijden in Nederlandse tijd.
+        What’s dropping soon, with a live countdown. Times in Amsterdam time (CET/CEST).
       </p>
 
       <section className="pt-10">
-        <SectionHeading eyebrow={`${upcoming.length} gepland`} title="Upcoming" />
+        <SectionHeading eyebrow={`${upcoming.length} scheduled`} title="Upcoming" />
         {upcoming.length > 0 ? (
           <div className="grid gap-3 md:grid-cols-2">
             {upcoming.map((drop) => (
@@ -43,14 +43,14 @@ export default function DropsPage() {
           </div>
         ) : (
           <p className="border border-dashed border-line px-6 py-10 text-center text-muted">
-            Nog geen drops gepland. Check binnenkort weer.
+            No drops scheduled yet. Check back soon.
           </p>
         )}
       </section>
 
       {past.length > 0 && (
         <section className="pt-14">
-          <SectionHeading title="Eerdere drops" />
+          <SectionHeading title="Past drops" />
           <div className="grid gap-3 md:grid-cols-2">
             {past.map((drop) => (
               <DropCard

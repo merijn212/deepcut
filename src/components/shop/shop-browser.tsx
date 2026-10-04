@@ -103,7 +103,7 @@ export function ShopBrowser({
     });
 
   // Zoekveld: debounced naar de URL, en terug-synchroniseren als de zoekterm
-  // van buitenaf verandert (chip weggeklikt, "Wis alles", navigatie).
+  // van buitenaf verandert (chip weggeklikt, "Clear all", navigatie).
   const searchRef = useRef<HTMLInputElement>(null);
   const searchTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   useEffect(() => {
@@ -129,7 +129,7 @@ export function ShopBrowser({
           active={filters.categories.length === 0}
           onClick={() => updateParams((p) => p.delete(PARAMS.category))}
         >
-          Alles
+          All
         </CategoryPill>
         {categoriesWithItems.map((category) => (
           <CategoryPill
@@ -161,7 +161,7 @@ export function ShopBrowser({
             <input
               ref={searchRef}
               type="search"
-              placeholder="Zoek op item, merk of type…"
+              placeholder="Search items, brands or types…"
               defaultValue={filters.q}
               onChange={(e) => onSearch(e.currentTarget.value)}
               className="min-w-0 flex-1 basis-full border border-line bg-transparent px-3 py-2 text-sm outline-none placeholder:text-muted focus:border-fg sm:basis-auto"
@@ -174,11 +174,11 @@ export function ShopBrowser({
               Filters{activeCount > 0 && ` (${activeCount})`}
             </button>
             <label className="flex items-center gap-2 border border-line px-3 py-2 focus-within:border-fg">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-muted">Sorteer</span>
+              <span className="font-mono text-[11px] uppercase tracking-wider text-muted">Sort</span>
               <select
                 value={filters.sort}
                 onChange={(e) =>
-                  set(PARAMS.sort, e.currentTarget.value === "nieuw" ? undefined : e.currentTarget.value)
+                  set(PARAMS.sort, e.currentTarget.value === "newest" ? undefined : e.currentTarget.value)
                 }
                 className="bg-transparent text-sm outline-none"
               >
@@ -207,7 +207,7 @@ export function ShopBrowser({
                 className="flex items-center gap-1 bg-tile px-2 py-1 text-xs hover:bg-line"
               >
                 {chip.label} <span aria-hidden>✕</span>
-                <span className="sr-only">filter verwijderen</span>
+                <span className="sr-only">remove filter</span>
               </button>
             ))}
             {chips.length > 1 && (
@@ -225,15 +225,15 @@ export function ShopBrowser({
             <ProductGrid items={results} now={now} />
           ) : (
             <div className="border border-dashed border-line px-6 py-16 text-center">
-              <p className="font-medium">Geen items gevonden</p>
-              <p className="mt-1 text-sm text-muted">Probeer minder filters of een andere zoekterm.</p>
+              <p className="font-medium">No items found</p>
+              <p className="mt-1 text-sm text-muted">Try fewer filters or a different search.</p>
               {activeCount > 0 && (
                 <button
                   type="button"
                   onClick={clearAll}
                   className="mt-4 bg-fg px-4 py-2 font-mono text-xs uppercase tracking-wider text-bg"
                 >
-                  Wis filters
+                  Clear filters
                 </button>
               )}
             </div>
@@ -298,7 +298,7 @@ function buildChips(
     chips.push({ key: `b-${id}`, label, param: PARAMS.brand, value: id });
   }
   for (const size of f.sizes) {
-    chips.push({ key: `s-${size}`, label: `Maat ${size}`, param: PARAMS.size, value: size });
+    chips.push({ key: `s-${size}`, label: `Size ${size}`, param: PARAMS.size, value: size });
   }
   for (const color of f.colors) {
     const label = COLORS[color as ColorId]?.label ?? color;
@@ -308,13 +308,13 @@ function buildChips(
     const option = STATUS_OPTIONS.find((o) => o.value === status)!;
     chips.push({ key: `st-${status}`, label: option.label, param: PARAMS.status, value: option.param });
   }
-  if (f.onlyNew) chips.push({ key: "new", label: "Nieuw", param: PARAMS.onlyNew });
+  if (f.onlyNew) chips.push({ key: "new", label: "New", param: PARAMS.onlyNew });
   if (f.onlySale) chips.push({ key: "sale", label: "Sale", param: PARAMS.onlySale });
   if (f.minPrice !== undefined) {
-    chips.push({ key: "min", label: `Vanaf ${formatPrice(f.minPrice)}`, param: PARAMS.min });
+    chips.push({ key: "min", label: `From ${formatPrice(f.minPrice)}`, param: PARAMS.min });
   }
   if (f.maxPrice !== undefined) {
-    chips.push({ key: "max", label: `Tot ${formatPrice(f.maxPrice)}`, param: PARAMS.max });
+    chips.push({ key: "max", label: `Up to ${formatPrice(f.maxPrice)}`, param: PARAMS.max });
   }
   return chips;
 }
