@@ -37,14 +37,14 @@ export function DropCard({
           upcoming ? "bg-accent text-accent-fg" : "bg-tile text-muted",
         )}
       >
-        <span className="text-2xl font-black tabular-nums sm:text-3xl">{dayFormatter.format(date)}</span>
+        <span className="font-display text-3xl leading-none tabular-nums sm:text-4xl">{dayFormatter.format(date)}</span>
         <span className="font-mono text-[11px] uppercase tracking-wider">
           {monthFormatter.format(date).replace(".", "")}
         </span>
       </div>
       <div className="min-w-0">
         <p className="font-mono text-[11px] uppercase tracking-wider text-muted">{brand?.name}</p>
-        <h3 className="text-lg font-semibold uppercase tracking-tight underline-offset-4 group-hover:underline">
+        <h3 className="font-display text-2xl leading-tight tracking-tight underline-offset-4 group-hover:underline">
           {drop.title}
         </h3>
         {drop.description && <p className="mt-1 line-clamp-2 text-sm text-muted">{drop.description}</p>}
