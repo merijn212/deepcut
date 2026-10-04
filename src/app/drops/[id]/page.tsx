@@ -33,7 +33,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
   const now = getRenderTime();
   const brand = getBrand(drop.brand)!;
   const upcoming = Date.parse(drop.date) > now;
-  const items = sortItems(getItemsByDrop(drop.id), "prijs-af", now);
+  const items = sortItems(getItemsByDrop(drop.id), "price-desc", now);
 
   return (
     <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
@@ -45,7 +45,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
 
       <header className="border-b border-line pb-10">
         <Link
-          href={`/merken/${brand.id}`}
+          href={`/brands/${brand.id}`}
           className="font-mono text-xs uppercase tracking-wider text-muted hover:text-fg"
         >
           {brand.name}
@@ -60,7 +60,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
           </div>
         ) : (
           <p className="mt-6 font-mono text-xs uppercase tracking-wider text-muted">
-            Gedropt op {formatLongDate(drop.date)}
+            Dropped {formatLongDate(drop.date)}
           </p>
         )}
         {drop.description && <p className="mt-6 max-w-2xl text-lg text-muted">{drop.description}</p>}
@@ -72,7 +72,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
               rel="noreferrer"
               className="bg-fg px-5 py-3 font-mono text-xs uppercase tracking-wider text-bg hover:opacity-85"
             >
-              {upcoming ? "Naar de drop" : "Bekijk bij het merk"} ↗
+              {upcoming ? "Go to the drop" : "View at the brand"} ↗
             </a>
           )}
           {brand.instagram && (
@@ -89,11 +89,11 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
       </header>
 
       <section className="pt-10">
-        <SectionHeading title={upcoming ? "In deze drop" : "Uit deze drop"} />
+        <SectionHeading title={upcoming ? "In this drop" : "From this drop"} />
         {items.length > 0 ? (
           <ProductGrid items={items} now={now} />
         ) : (
-          <p className="text-muted">De items van deze drop worden binnenkort toegevoegd.</p>
+          <p className="text-muted">Items from this drop will be added soon.</p>
         )}
       </section>
     </div>

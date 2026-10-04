@@ -34,7 +34,7 @@ export function ProductGallery({
               key={src}
               type="button"
               onClick={() => setActive(i)}
-              aria-label={`Foto ${i + 1}`}
+              aria-label={`Photo ${i + 1}`}
               aria-current={i === active}
               className={cn(
                 "relative aspect-[4/5] overflow-hidden bg-tile ring-offset-2 ring-offset-bg",

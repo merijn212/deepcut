@@ -24,12 +24,15 @@ export default function HomePage() {
   const upcomingDrops = getUpcomingDrops(now);
 
   const available = catalog.filter((item) => getStatus(item, now) === "available");
-  const newItems = sortItems(available.filter((item) => isNew(item, now)), "nieuw", now);
+  const newItems = sortItems(available.filter((item) => isNew(item, now)), "newest", now);
   // Te weinig nieuwe items? Vul aan met de meest recente beschikbare items.
-  const latest = (newItems.length >= 4 ? newItems : sortItems(available, "nieuw", now)).slice(0, 8);
+  const latest = (newItems.length >= 4 ? newItems : sortItems(available, "newest", now)).slice(0, 8);
   const featured = sortItems(
-    catalog.filter((item) => item.featured && getStatus(item, now) !== "sold-out"),
-    "nieuw",
+    catalog.filter(
+      (item) =>
+        item.featured && getStatus(item, now) !== "sold-out" && !latest.some((l) => l.id === item.id),
+    ),
+    "newest",
     now,
   ).slice(0, 4);
   const categories = CATEGORIES.map((c) => ({
@@ -42,12 +45,12 @@ export default function HomePage() {
       {/* Hero */}
       <section className="border-b border-line py-14 sm:py-20">
         <p className="font-mono text-[11px] uppercase tracking-wider text-muted">
-          {brands.length} merken · {catalog.length} items · {upcomingDrops.length} drops gepland
+          {brands.length} {brands.length === 1 ? "brand" : "brands"} · {catalog.length} {catalog.length === 1 ? "item" : "items"} · {upcomingDrops.length} upcoming {upcomingDrops.length === 1 ? "drop" : "drops"}
         </p>
         <h1 className="mt-4 max-w-4xl text-5xl font-black uppercase leading-[0.9] tracking-tighter sm:text-7xl lg:text-8xl">
           Niche labels.
           <br />
-          Eén plek.
+          One place.
         </h1>
         <p className="mt-6 max-w-xl text-base text-muted sm:text-lg">{siteConfig.description}</p>
         <div className="mt-8 flex flex-wrap gap-2">
@@ -55,7 +58,7 @@ export default function HomePage() {
             href="/shop"
             className="bg-fg px-5 py-3 font-mono text-xs uppercase tracking-wider text-bg hover:opacity-85"
           >
-            Shop alles
+            Shop all
           </Link>
           <Link
             href="/drops"
@@ -68,7 +71,7 @@ export default function HomePage() {
 
       {upcomingDrops.length > 0 && (
         <section className="pt-14">
-          <SectionHeading eyebrow="Zet een wekker" title="Upcoming drops" href="/drops" />
+          <SectionHeading eyebrow="Set an alarm" title="Upcoming drops" href="/drops" />
           <div className="grid gap-3 md:grid-cols-2">
             {upcomingDrops.slice(0, 4).map((drop) => (
               <DropCard
@@ -86,9 +89,9 @@ export default function HomePage() {
       {latest.length > 0 && (
         <section className="pt-14">
           <SectionHeading
-            eyebrow={newItems.length >= 4 ? `Laatste ${siteConfig.newItemDays} dagen` : "Recent toegevoegd"}
-            title="Nieuw binnen"
-            href={newItems.length >= 4 ? "/shop?nieuw=1" : "/shop"}
+            eyebrow={newItems.length >= 4 ? `Last ${siteConfig.newItemDays} days` : "Recently added"}
+            title="New in"
+            href={newItems.length >= 4 ? "/shop?new=1" : "/shop"}
           />
           <ProductGrid items={latest} now={now} />
         </section>
@@ -96,19 +99,19 @@ export default function HomePage() {
 
       {featured.length > 0 && (
         <section className="pt-14">
-          <SectionHeading eyebrow="Picks" title="Uitgelicht" />
+          <SectionHeading eyebrow="Picks" title="Featured" />
           <ProductGrid items={featured} now={now} />
         </section>
       )}
 
       {categories.length > 0 && (
         <section className="pt-14">
-          <SectionHeading title="Shop per type" href="/shop" />
+          <SectionHeading title="Shop by type" href="/shop" />
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => (
               <Link
                 key={category.id}
-                href={`/shop?categorie=${category.id}`}
+                href={`/shop?category=${category.id}`}
                 className="border border-line px-4 py-2.5 text-sm transition-colors hover:border-fg hover:bg-fg hover:text-bg"
               >
                 {category.label}
@@ -121,12 +124,12 @@ export default function HomePage() {
 
       {brands.length > 0 && (
         <section className="pt-14">
-          <SectionHeading title="Merken" href="/merken" />
+          <SectionHeading title="Brands" href="/brands" />
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {brands.map((brand) => (
               <li key={brand.id}>
                 <Link
-                  href={`/merken/${brand.id}`}
+                  href={`/brands/${brand.id}`}
                   className="text-2xl font-black uppercase tracking-tighter text-muted transition-colors hover:text-fg sm:text-4xl"
                 >
                   {brand.name}

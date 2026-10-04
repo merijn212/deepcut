@@ -48,7 +48,7 @@ export function ProductCard({ item, now }: { item: CatalogItem; now: number }) {
           </p>
           {status === "upcoming" && item.releaseAt && (
             <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wider text-accent">
-              Drop {formatDateTime(item.releaseAt)}
+              Drops {formatDateTime(item.releaseAt)}
             </p>
           )}
         </div>

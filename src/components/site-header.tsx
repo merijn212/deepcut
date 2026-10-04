@@ -17,7 +17,7 @@ export function SiteHeader({ now }: { now: number }) {
           className="flex items-center justify-center gap-2 bg-fg px-4 py-1.5 text-center font-mono text-[11px] uppercase tracking-wider text-bg"
         >
           <span className="truncate">
-            <span className="hidden sm:inline">Volgende drop: </span>
+            <span className="hidden sm:inline">Next drop: </span>
             {getBrand(nextDrop.brand)?.name} · {nextDrop.title}
           </span>
           <span className="shrink-0 whitespace-nowrap text-accent">
