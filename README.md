@@ -1,4 +1,4 @@
-# Merrie-fit
+# Deepcut
 
 Gecureerde shop voor kleding van niche Instagram-merken. Bezoekers kunnen filteren op
 type kleding, merk, maat, kleur, prijs en status, zien wat nieuw is en welke drops

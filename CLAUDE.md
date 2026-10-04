@@ -1,6 +1,6 @@
 @AGENTS.md
 
-# Merrie-fit
+# Deepcut
 
 Gecureerde shop voor niche Instagram-kledingmerken. UI-teksten zijn Nederlands.
 
