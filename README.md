@@ -119,6 +119,34 @@ instellingen werken. Pagina's worden elk uur opnieuw opgebouwd, zodat "Nieuw" en
 "Binnenkort" vanzelf bijwerken; countdowns lopen live in de browser. Na elke push met nieuwe
 items deployt Vercel automatisch.
 
+## Automatisch bijwerken
+
+**"Nieuw" verloopt vanzelf.** Een item is nieuw tot `newItemDays` (standaard 14) dagen na
+`addedAt`, of na de release als die later is (`releaseAt` of de datum van de drop). Pas het
+aantal dagen aan in `src/config/site.ts`. Omdat de pagina's elk uur opnieuw worden
+opgebouwd, verdwijnt het label zonder dat je iets hoeft te pushen.
+
+**Uitverkochte items verdwijnen vanzelf.** De GitHub Action `Stock check`
+(`.github/workflows/stock-check.yml`) draait elke dag om 05:00 UTC en voert
+`scripts/check-stock.mjs` uit. Die haalt voor elk item met een `url` de Shopify-productdata
+op (`<url>.js`) en:
+
+- verwijdert het item uit `products.ts` als alle maten/varianten uitverkocht zijn;
+- werkt `soldOutSizes` bij als losse maten op zijn of weer terug zijn ("SMALL" in de shop
+  telt als "S" hier, enz.);
+- slaat items over die nog moeten droppen, geen `url` hebben of niet op Shopify staan;
+- verandert niets bij een fout of 404, maar zet die als waarschuwing in het rapport
+  (Actions → Stock check → de run → Summary).
+
+Als er iets verandert, draaien lint, typecheck en build; daarna commit de Action naar
+`main` en deployt de site opnieuw. Instellen:
+
+- **Hoe vaak**: de `cron`-regel in de workflow (bijv. `"0 */6 * * *"` voor elke 6 uur).
+- **Laten staan in plaats van verwijderen**: zet `REMOVE_SOLD_OUT` op `"false"`; items
+  krijgen dan `soldOut: true`.
+- **Handmatig draaien**: Actions → Stock check → Run workflow (met "dry run" om alleen te
+  kijken), of lokaal `npm run stock -- --dry-run`.
+
 ## Structuur
 
 ```
@@ -128,4 +156,5 @@ src/
   config/       site-instellingen
   data/         merken, items, drops, categorieën en kleuren  ← hier voeg je dingen toe
   lib/          catalogus + validatie, filterlogica, status, formattering
+scripts/        voorraadcheck (draait dagelijks via .github/workflows/stock-check.yml)
 ```

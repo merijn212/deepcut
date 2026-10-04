@@ -1,0 +1,71 @@
+# Dagelijkse voorraadcheck: haalt uitverkochte items van de site en werkt
+# uitverkochte maten bij (zie scripts/check-stock.mjs). Wijzigingen worden
+# gecontroleerd (lint, typecheck, build) en dan op main gezet, waarna de site
+# automatisch opnieuw deployt.
+name: Stock check
+
+on:
+  schedule:
+    # Elke dag om 05:00 UTC (07:00 in de zomer, 06:00 in de winter in NL).
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Alleen rapporteren, niets aanpassen"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stock-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # Zet op "false" om uitverkochte items te laten staan met soldOut: true.
+      REMOVE_SOLD_OUT: "true"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Check stock
+        env:
+          STOCK_COMMIT_MESSAGE_FILE: ${{ runner.temp }}/stock-commit.txt
+        run: npm run stock -- ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet -- src/data/products.ts; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --stat
+          fi
+
+      - name: Lint, typecheck and build
+        if: steps.diff.outputs.changed == 'true'
+        run: npm run check && npm run build
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add src/data/products.ts
+          git commit -F "$RUNNER_TEMP/stock-commit.txt"
+          git pull --rebase origin main
+          git push origin HEAD:main
