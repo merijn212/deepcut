@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { DropCard } from "@/components/drop-card";
@@ -91,7 +92,7 @@ export default function HomePage() {
               <span className="min-w-0 truncate">
                 <span className="text-muted">{heroItem.brandName}</span> · {heroItem.name}
               </span>
-              <span className="shrink-0 font-medium underline-offset-4 group-hover:underline">View →</span>
+              <span className="shrink-0 font-medium underline-offset-4 group-hover:underline">View<ArrowRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} /></span>
             </div>
           </Link>
         )}

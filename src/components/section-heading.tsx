@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export function SectionHeading({
@@ -24,7 +25,8 @@ export function SectionHeading({
           href={href}
           className="shrink-0 text-sm font-medium text-muted underline-offset-4 hover:text-fg hover:underline"
         >
-          {linkLabel} →
+          {linkLabel}
+          <ArrowRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
         </Link>
       )}
     </div>

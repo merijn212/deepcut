@@ -1,5 +1,6 @@
 "use client";
 
+import { X } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -206,7 +207,7 @@ export function ShopBrowser({
                 }
                 className="flex items-center gap-1 bg-tile px-2 py-1 text-xs hover:bg-line"
               >
-                {chip.label} <span aria-hidden>✕</span>
+                {chip.label} <X aria-hidden className="size-3.5" strokeWidth={1.75} />
                 <span className="sr-only">remove filter</span>
               </button>
             ))}

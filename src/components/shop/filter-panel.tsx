@@ -1,5 +1,7 @@
 "use client";
 
+import { X } from "lucide-react";
+
 import { COLORS, type ColorId } from "@/data/taxonomy";
 import { cn } from "@/lib/cn";
 import { PARAMS, STATUS_OPTIONS, type Filters } from "@/lib/filters";
@@ -51,7 +53,8 @@ export function FilterPanel({
           onClick={onClose}
           className="font-mono text-xs uppercase tracking-wider"
         >
-          Close ✕
+          Close
+          <X aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
         </button>
       </div>
 

@@ -14,6 +14,8 @@ Gecureerde shop voor niche Instagram-kledingmerken. UI-teksten zijn Engels (en-G
   `sale`, `min`, `max`, `sort`, `q`) en worden bijgewerkt met `window.history.replaceState`.
 - Tijdsafhankelijke status ("Nieuw", "Binnenkort") wordt op de server bepaald via
   `getRenderTime()` (revalidate elk uur, zie `app/layout.tsx`); countdowns gebruiken `useNow()`.
+- Geen emoji in de UI of in content (ook geen pijltjes of kruisjes als tekstteken, die tonen
+  op telefoons als emoji). Gebruik lijniconen uit `lucide-react`.
 - Afrekenen gebeurt bij het merk: items linken naar `url` (of de website van het merk).
 
 Na wijzigingen: `npm run check` en `npm run build`.
