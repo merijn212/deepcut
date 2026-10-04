@@ -23,10 +23,14 @@ export function SectionHeading({
       {href && (
         <Link
           href={href}
-          className="shrink-0 text-sm font-medium text-muted underline-offset-4 hover:text-fg hover:underline"
+          className="group/link shrink-0 text-sm font-medium text-muted transition-colors hover:text-fg"
         >
           {linkLabel}
-          <ArrowRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
+          <ArrowRight
+            aria-hidden
+            className="ml-1 inline size-[1.1em] align-[-0.2em] transition-transform duration-300 group-hover/link:translate-x-0.5"
+            strokeWidth={1.75}
+          />
         </Link>
       )}
     </div>

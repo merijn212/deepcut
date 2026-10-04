@@ -6,7 +6,7 @@ import { instagramUrl } from "@/lib/format";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-line">
+    <footer className="mt-24 overflow-hidden border-t border-line">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-[1fr_auto] sm:px-6">
         <div className="max-w-md">
           <p className="text-lg font-semibold tracking-[-0.04em]">{siteConfig.name}</p>
@@ -27,6 +27,12 @@ export function SiteFooter() {
             </a>
           )}
         </nav>
+      </div>
+      {/* Groot woordmerk als rustige afsluiter, half weggezakt onder de rand. */}
+      <div aria-hidden className="mx-auto max-w-7xl overflow-hidden px-4 sm:px-6">
+        <p className="-mb-[0.18em] -ml-[0.05em] select-none whitespace-nowrap text-[clamp(4rem,24vw,20.5rem)] font-semibold leading-none tracking-[-0.07em] text-tile">
+          {siteConfig.name}
+        </p>
       </div>
     </footer>
   );

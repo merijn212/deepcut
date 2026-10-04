@@ -13,7 +13,7 @@ export function Price({
 }) {
   const sale = isOnSale({ price, compareAtPrice });
   return (
-    <span className={cn("whitespace-nowrap font-mono tabular-nums", className)}>
+    <span className={cn("whitespace-nowrap tabular-nums", className)}>
       {sale && <s className="mr-1.5 text-muted">{formatPrice(compareAtPrice!)}</s>}
       {formatPrice(price)}
     </span>
