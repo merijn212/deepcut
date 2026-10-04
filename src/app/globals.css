@@ -6,25 +6,13 @@
   --muted: #6b6b6b;
   --line: #e0e0de;
   --tile: #ebebea;
-  /* Achtergrond achter productfoto's (boven naar onder); blijft licht, ook in dark mode. */
+  /* Achtergrond achter productfoto's (boven naar onder). */
   --frame: #efefec;
   --frame-2: #e5e5e2;
   --accent: #2f3cff;
   --accent-fg: #ffffff;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b0b0b;
-    --fg: #f2f2f2;
-    --muted: #8f8f8f;
-    --line: #262626;
-    --tile: #171717;
-    --frame: #dcdcd9;
-    --frame-2: #d0d0cd;
-    --accent: #7380ff;
-    --accent-fg: #0b0b0b;
-  }
+  /* De site is altijd licht, ook als telefoon of browser op donkere modus staat. */
+  color-scheme: light;
 }
 
 @theme inline {
@@ -55,4 +43,37 @@ body {
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Rustige entree: elementen komen een paar pixels omhoog en vervagen in. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.rise {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Bij scrollen: alleen in browsers met scroll-driven animations, anders gewoon zichtbaar. */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .reveal {
+    animation: none;
+  }
 }

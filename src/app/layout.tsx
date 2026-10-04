@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
@@ -27,6 +27,12 @@ export const metadata: Metadata = {
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
+};
+
+// Altijd licht: ook op telefoons in donkere modus (adresbalk en formulieren inbegrepen).
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#f6f6f5",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

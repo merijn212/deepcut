@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -162,6 +162,24 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
             <p className="mt-3 text-xs text-muted">
               Checkout happens on the {brand.name} store. Check there for current price and stock.
             </p>
+
+            {brand.description && (
+              <Link href={`/brands/${brand.id}`} className="group mt-10 block border-t border-line pt-6">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-muted">
+                  About the label{brand.country && ` · ${brand.country}`}
+                </p>
+                <p className="mt-2 text-lg font-semibold tracking-[-0.02em]">{brand.name}</p>
+                <p className="mt-1 max-w-prose text-sm leading-relaxed text-muted">{brand.description}</p>
+                <span className="mt-3 inline-flex items-center text-sm font-medium">
+                  See all {brand.name}
+                  <ArrowRight
+                    aria-hidden
+                    className="ml-1 size-[1.1em] transition-transform duration-300 group-hover:translate-x-0.5"
+                    strokeWidth={1.75}
+                  />
+                </span>
+              </Link>
+            )}
           </div>
         </div>
       </ColorwayProvider>

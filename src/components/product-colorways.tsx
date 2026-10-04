@@ -110,7 +110,7 @@ export function SizeList({ sizes, soldOut }: { sizes: string[]; soldOut: boolean
           <li
             key={size}
             className={cn(
-              "min-w-11 border border-line px-2.5 py-1.5 text-center font-mono text-xs uppercase",
+              "min-w-11 rounded-md border border-line px-2.5 py-1.5 text-center text-xs font-medium tabular-nums",
               out && "text-muted line-through",
             )}
           >
@@ -139,10 +139,14 @@ export function ShopButton({ brandName, fallbackUrl }: { brandName: string; fall
       href={url}
       target="_blank"
       rel="noreferrer"
-      className="rounded-full bg-fg px-6 py-3.5 text-center text-sm font-medium text-bg hover:opacity-85"
+      className="group rounded-full bg-fg px-6 py-3.5 text-center text-sm font-medium text-bg transition-opacity hover:opacity-85"
     >
       Shop {colorways.length > 1 ? `${current.name} ` : ""}at {brandName}
-      <ArrowUpRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
+      <ArrowUpRight
+        aria-hidden
+        className="ml-1 inline size-[1.1em] align-[-0.2em] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        strokeWidth={1.75}
+      />
     </a>
   );
 }

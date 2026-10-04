@@ -38,6 +38,8 @@ export default function HomePage() {
     now,
   ).slice(0, 4);
   const heroItem = latest.find((item) => item.images?.length) ?? latest[0];
+  const heroDetail = heroItem?.images?.[1];
+  const heroBrand = heroItem && getBrand(heroItem.brand);
   const categories = CATEGORIES.map((c) => ({
     ...c,
     count: catalog.filter((item) => item.category === c.id).length,
@@ -47,12 +49,12 @@ export default function HomePage() {
     <div className="mx-auto max-w-7xl px-4 sm:px-6">
       {/* Hero */}
       <section className="grid gap-8 border-b border-line py-10 sm:py-14 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
-        <div>
+        <div className="rise">
           <p className="font-mono text-[11px] uppercase tracking-wider text-muted">
             {brands.length} {brands.length === 1 ? "label" : "labels"} · {catalog.length} {catalog.length === 1 ? "piece" : "pieces"}
             {upcomingDrops.length > 0 && ` · ${upcomingDrops.length} upcoming ${upcomingDrops.length === 1 ? "drop" : "drops"}`}
           </p>
-          <h1 className="mt-4 max-w-2xl text-5xl font-semibold leading-[0.95] tracking-[-0.045em] sm:text-7xl">
+          <h1 className="mt-4 max-w-2xl text-5xl font-semibold leading-[0.95] tracking-[-0.045em] text-balance sm:text-7xl">
             Small labels, given the spotlight.
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
@@ -77,22 +79,48 @@ export default function HomePage() {
         </div>
 
         {heroItem && (
-          <Link href={`/product/${heroItem.id}`} className="group relative block">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-tile lg:aspect-[5/6]">
-              <ProductImage
-                src={heroItem.images?.[0]}
-                alt={`${heroItem.brandName} ${heroItem.name}`}
-                label={getCategoryLabel(heroItem.category)}
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                preload
-                className="transition duration-700 ease-out group-hover:scale-[1.02]"
-              />
+          <Link href={`/product/${heroItem.id}`} className="rise group relative block [animation-delay:120ms]">
+            {/* Redactionele opzet: grote foto plus een tweede beeld van hetzelfde stuk, iets lager. */}
+            <div className={heroDetail ? "grid grid-cols-[1.6fr_1fr] items-end gap-3 sm:gap-4" : undefined}>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-tile">
+                <ProductImage
+                  src={heroItem.images?.[0]}
+                  alt={`${heroItem.brandName} ${heroItem.name}`}
+                  label={getCategoryLabel(heroItem.category)}
+                  sizes="(min-width: 1024px) 30vw, 60vw"
+                  preload
+                  className="transition duration-700 ease-out group-hover:scale-[1.02]"
+                />
+              </div>
+              {heroDetail && (
+                <div className="mb-10 sm:mb-16">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-tile">
+                    <ProductImage
+                      src={heroDetail}
+                      alt=""
+                      label=""
+                      sizes="(min-width: 1024px) 18vw, 40vw"
+                      className="transition duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <p className="mt-2 hidden truncate font-mono text-[11px] uppercase tracking-wider text-muted sm:block">
+                    {heroBrand?.country ? `${heroItem.brandName}, ${heroBrand.country}` : heroItem.brandName}
+                  </p>
+                </div>
+              )}
             </div>
             <div className="mt-3 flex items-baseline justify-between gap-3 text-sm">
               <span className="min-w-0 truncate">
                 <span className="text-muted">{heroItem.brandName}</span> · {heroItem.name}
               </span>
-              <span className="shrink-0 font-medium underline-offset-4 group-hover:underline">View<ArrowRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} /></span>
+              <span className="shrink-0 font-medium">
+                View
+                <ArrowRight
+                  aria-hidden
+                  className="ml-1 inline size-[1.1em] align-[-0.2em] transition-transform duration-300 group-hover:translate-x-0.5"
+                  strokeWidth={1.75}
+                />
+              </span>
             </div>
           </Link>
         )}
@@ -153,21 +181,44 @@ export default function HomePage() {
 
       {brands.length > 0 && (
         <section className="pt-14">
-          <SectionHeading title="Brands" href="/brands" />
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
-            {brands.map((brand) => (
-              <li key={brand.id}>
-                <Link
-                  href={`/brands/${brand.id}`}
-                  className="text-3xl font-semibold tracking-[-0.04em] text-muted transition-colors hover:text-fg sm:text-5xl"
-                >
-                  {brand.name}
-                  <sup className="ml-1 font-mono text-[11px] font-normal tracking-normal">
-                    {getItemsByBrand(brand.id).length}
-                  </sup>
-                </Link>
-              </li>
-            ))}
+          <SectionHeading eyebrow="The labels" title="Brands" href="/brands" />
+          <ul className="-mt-6">
+            {brands.map((brand) => {
+              const items = sortItems(getItemsByBrand(brand.id), "newest", now);
+              const cover = items.find((item) => item.images?.length);
+              return (
+                <li key={brand.id} className="reveal border-b border-line">
+                  <Link
+                    href={`/brands/${brand.id}`}
+                    className="group grid grid-cols-[1fr_auto] items-center gap-4 py-5 sm:grid-cols-[1fr_auto_auto] sm:gap-8 sm:py-6"
+                  >
+                    <span className="min-w-0">
+                      <span className="block truncate text-3xl font-semibold tracking-[-0.04em] text-muted transition-colors duration-300 group-hover:text-fg sm:text-5xl">
+                        {brand.name}
+                      </span>
+                      <span className="mt-1 block font-mono text-[11px] uppercase tracking-wider text-muted">
+                        {[brand.country, brand.instagram && `@${brand.instagram}`].filter(Boolean).join(" · ")}
+                      </span>
+                    </span>
+                    {cover && (
+                      <span className="relative hidden aspect-[4/5] w-16 overflow-hidden rounded-md bg-tile opacity-0 transition duration-500 ease-out group-hover:opacity-100 sm:block">
+                        <ProductImage src={cover.images?.[0]} alt="" label="" sizes="64px" />
+                      </span>
+                    )}
+                    <span className="flex items-center gap-3 text-sm text-muted transition-colors group-hover:text-fg">
+                      <span className="tabular-nums">
+                        {items.length} {items.length === 1 ? "piece" : "pieces"}
+                      </span>
+                      <ArrowRight
+                        aria-hidden
+                        className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                        strokeWidth={1.75}
+                      />
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </section>
       )}

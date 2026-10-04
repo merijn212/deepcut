@@ -42,9 +42,3 @@ export function getColorways(item: Product): ResolvedColorway[] {
     })),
   ];
 }
-
-/** "3 colours", of undefined als het item maar één kleur heeft. */
-export function colorCountLabel(item: Product): string | undefined {
-  const count = 1 + (item.colorways?.length ?? 0);
-  return count > 1 ? `${count} colours` : undefined;
-}
