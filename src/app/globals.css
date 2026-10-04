@@ -1,35 +1,24 @@
 @import "tailwindcss";
 
-/*
- * Palet: ongebleekt canvas, warm inktzwart, ossenbloed als accent en een diep
- * olijfgroen voor de donkere banden (header-strip, footer). Geïnspireerd op
- * workwear-labels en oude stofstalenboeken in plaats van een standaard UI-kit.
- */
 :root {
-  --bg: #ebe5d8;
-  --fg: #1f1c16;
-  --muted: #6e6555;
-  --line: #cbc1ad;
-  --tile: #ddd5c3;
-  --accent: #8c2a1c;
-  --accent-fg: #f4efe4;
-  --band: #2c3327;
-  --band-fg: #e6dfcd;
-  --band-accent: #e08a63;
+  --bg: #f6f6f5;
+  --fg: #0b0b0b;
+  --muted: #6b6b6b;
+  --line: #e0e0de;
+  --tile: #ebebea;
+  --accent: #2f3cff;
+  --accent-fg: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #171610;
-    --fg: #e9e2d1;
-    --muted: #9c9381;
-    --line: #34312a;
-    --tile: #23211a;
-    --accent: #d0603f;
-    --accent-fg: #171610;
-    --band: #232a20;
-    --band-fg: #e6dfcd;
-    --band-accent: #e08a63;
+    --bg: #0b0b0b;
+    --fg: #f2f2f2;
+    --muted: #8f8f8f;
+    --line: #262626;
+    --tile: #171717;
+    --accent: #7380ff;
+    --accent-fg: #0b0b0b;
   }
 }
 
@@ -41,36 +30,13 @@
   --color-tile: var(--tile);
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
-  --color-band: var(--band);
-  --color-band-fg: var(--band-fg);
-  --color-band-accent: var(--band-accent);
-  --font-sans: var(--font-archivo);
-  --font-display: var(--font-instrument-serif);
-  --font-mono: var(--font-plex-mono);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--bg);
   color: var(--fg);
-}
-
-/* Lichte papierkorrel over de hele pagina, zodat vlakken niet digitaal-glad ogen. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.07;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-@media (prefers-color-scheme: dark) {
-  body::after {
-    mix-blend-mode: screen;
-    opacity: 0.05;
-  }
 }
 
 ::selection {
@@ -83,27 +49,4 @@ body::after {
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
-}
-
-/* Lopende band met merknamen; de inhoud staat er vier keer in, zodat -50% naadloos aansluit. */
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee {
-  animation: marquee 40s linear infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee {
-    animation: none;
-  }
-}
-
-/* Stippellijn tussen label en waarde, zoals in een oude catalogus-index. */
-.leader {
-  flex: 1;
-  min-width: 1rem;
-  border-bottom: 1px dotted var(--muted);
-  transform: translateY(-0.3em);
 }

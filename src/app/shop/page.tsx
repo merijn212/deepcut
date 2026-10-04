@@ -6,7 +6,7 @@ import { getBrands, getCatalog, getRenderTime } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "Every item from niche Instagram brands, filterable by type, brand, size, colour and price.",
+  description: "Every piece from independent labels, filterable by type, brand, size, colour and price.",
 };
 
 export default function ShopPage() {
@@ -14,7 +14,7 @@ export default function ShopPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10">
-      <h1 className="mb-6 font-display text-5xl leading-none tracking-tight sm:text-7xl">Shop</h1>
+      <h1 className="mb-6 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Shop</h1>
       <Suspense fallback={<ShopSkeleton />}>
         <ShopBrowser items={getCatalog()} brands={brands} initialNow={getRenderTime()} />
       </Suspense>

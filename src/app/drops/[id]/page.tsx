@@ -50,7 +50,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
         >
           {brand.name}
         </Link>
-        <h1 className="mt-2 font-display text-6xl leading-[0.9] tracking-tight sm:text-8xl">
+        <h1 className="mt-2 text-5xl font-semibold leading-[0.9] tracking-[-0.04em] sm:text-7xl">
           {drop.title}
         </h1>
         {upcoming ? (
@@ -70,7 +70,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
               href={drop.url}
               target="_blank"
               rel="noreferrer"
-              className="bg-fg px-5 py-3 font-mono text-xs uppercase tracking-wider text-bg hover:opacity-85"
+              className="bg-fg rounded-full px-6 py-3 text-sm font-medium text-bg hover:opacity-85"
             >
               {upcoming ? "Go to the drop" : "View at the brand"} ↗
             </a>
@@ -80,7 +80,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
               href={instagramUrl(brand.instagram)}
               target="_blank"
               rel="noreferrer"
-              className="border border-fg px-5 py-3 font-mono text-xs uppercase tracking-wider hover:bg-fg hover:text-bg"
+              className="border border-fg rounded-full px-6 py-3 text-sm font-medium hover:bg-fg hover:text-bg"
             >
               @{brand.instagram} ↗
             </a>

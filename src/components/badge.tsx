@@ -4,10 +4,10 @@ import type { ItemStatus } from "@/lib/status";
 type Variant = "new" | "upcoming" | "sold-out" | "sale" | "outline";
 
 const styles: Record<Variant, string> = {
-  new: "bg-accent text-accent-fg",
-  upcoming: "bg-band text-band-fg",
-  "sold-out": "bg-bg/85 text-muted ring-1 ring-line",
-  sale: "bg-bg text-accent ring-1 ring-accent",
+  new: "bg-fg text-bg",
+  upcoming: "bg-accent text-accent-fg",
+  "sold-out": "bg-bg/85 text-muted",
+  sale: "bg-bg text-fg ring-1 ring-fg",
   outline: "text-fg ring-1 ring-line",
 };
 
@@ -15,7 +15,7 @@ export function Badge({ variant, children }: { variant: Variant; children: React
   return (
     <span
       className={cn(
-        "inline-flex items-center px-1.5 py-1 font-mono text-[10px] uppercase leading-none tracking-wider",
+        "inline-flex items-center px-1.5 py-0.5 font-mono text-[10px] uppercase leading-none tracking-wider",
         styles[variant],
       )}
     >
