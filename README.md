@@ -63,7 +63,7 @@ Filterlinks kun je delen, bijvoorbeeld `/shop?category=hoodies&size=M&color=blac
   colors: ["black"],                // zie COLORS in src/data/taxonomy.ts
   description: "Heavyweight hoodie met verlaagde schouders.",
   url: "https://merknaam.com/products/boxy-hoodie",
-  addedAt: "2026-10-04",            // vandaag; bepaalt het "Nieuw"-label
+  addedAt: "2026-10-04",            // vandaag; bepaalt het "Nieuw"-label (met tijd mag ook)
   releaseAt: "2026-10-18T18:00:00+02:00", // optioneel: nog niet uit, dan "Binnenkort"
   drop: "merknaam-fw26",            // optioneel: id uit drops.ts (dan geldt de drop-datum)
   soldOut: false,                   // optioneel
@@ -136,6 +136,9 @@ op (`<url>.js`) en:
   telt als "S" hier, enz.);
 - zoekt de andere kleuren van het item in de shop en houdt `colorways` bij (zie hieronder);
 - slaat items over die nog moeten droppen, geen `url` hebben of niet op Shopify staan;
+- werkt ook bij merken met een eigen (headless) storefront, zoals No Maintenance: geeft
+  `<url>.js` daar geen productdata, dan haalt de check die op bij het `myshopify.com`-adres
+  dat op de productpagina staat. De link op de site blijft die naar de shop van het merk;
 - verandert niets bij een fout of 404, maar zet die als waarschuwing in het rapport
   (Actions → Stock check → de run → Summary).
 
@@ -143,7 +146,8 @@ op (`<url>.js`) en:
 één product of als losse producten met dezelfde naam ("Work Pant - Black", "Work Pant - Sand").
 De voorraadcheck vindt die kleuren en zet ze in `colorways` (naam, kleur voor de filter, link,
 foto's en uitverkochte maten per kleur). Het item zelf krijgt `colorName` en de kleur
-verdwijnt uit de naam ("Work Pant"). Nieuwe kleuren komen er vanzelf bij, uitverkochte kleuren
+verdwijnt uit de naam ("Work Pant"). Losse producten met een andere prijs tellen niet als
+kleur, want een kleur heeft dezelfde prijs als het item. Nieuwe kleuren komen er vanzelf bij, uitverkochte kleuren
 gaan eraf. Klopt een geraden kleur niet (bijv. "Mauve" als `purple`), pas `color` dan gewoon
 aan: bestaande namen, kleuren en foto's laat de check staan. Een nieuw item met kleuren vul
 je direct met `npm run stock`.
