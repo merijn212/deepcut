@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -148,7 +149,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
                 rel="noreferrer"
                 className="bg-fg rounded-full px-6 py-3.5 text-center text-sm font-medium text-bg hover:opacity-85"
               >
-                Shop at {brand.name} ↗
+                Shop at {brand.name}<ArrowUpRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
               </a>
             )}
             {status === "upcoming" && drop && (
@@ -171,7 +172,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
                 rel="noreferrer"
                 className="border border-fg rounded-full px-6 py-3.5 text-center text-sm font-medium hover:bg-fg hover:text-bg"
               >
-                {status === "upcoming" ? "Follow" : "View"} @{brand.instagram} on Instagram ↗
+                {status === "upcoming" ? "Follow" : "View"} @{brand.instagram} on Instagram<ArrowUpRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
               </a>
             )}
           </div>

@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -72,7 +73,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
               rel="noreferrer"
               className="bg-fg rounded-full px-6 py-3 text-sm font-medium text-bg hover:opacity-85"
             >
-              {upcoming ? "Go to the drop" : "View at the brand"} ↗
+              {upcoming ? "Go to the drop" : "View at the brand"}<ArrowUpRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
             </a>
           )}
           {brand.instagram && (
@@ -82,7 +83,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
               rel="noreferrer"
               className="border border-fg rounded-full px-6 py-3 text-sm font-medium hover:bg-fg hover:text-bg"
             >
-              @{brand.instagram} ↗
+              @{brand.instagram}<ArrowUpRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
             </a>
           )}
         </div>

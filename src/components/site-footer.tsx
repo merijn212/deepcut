@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
@@ -22,7 +23,7 @@ export function SiteFooter() {
           <Link href="/brands" className="hover:underline">Brands</Link>
           {siteConfig.instagram && (
             <a href={instagramUrl(siteConfig.instagram)} className="hover:underline" target="_blank" rel="noreferrer">
-              Instagram ↗
+              Instagram<ArrowUpRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
             </a>
           )}
         </nav>
