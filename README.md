@@ -131,12 +131,22 @@ opgebouwd, verdwijnt het label zonder dat je iets hoeft te pushen.
 `scripts/check-stock.mjs` uit. Die haalt voor elk item met een `url` de Shopify-productdata
 op (`<url>.js`) en:
 
-- verwijdert het item uit `products.ts` als alle maten/varianten uitverkocht zijn;
+- verwijdert het item uit `products.ts` als het in geen enkele kleur meer leverbaar is;
 - werkt `soldOutSizes` bij als losse maten op zijn of weer terug zijn ("SMALL" in de shop
   telt als "S" hier, enz.);
+- zoekt de andere kleuren van het item in de shop en houdt `colorways` bij (zie hieronder);
 - slaat items over die nog moeten droppen, geen `url` hebben of niet op Shopify staan;
 - verandert niets bij een fout of 404, maar zet die als waarschuwing in het rapport
   (Actions → Stock check → de run → Summary).
+
+**Kleuren.** Veel shops verkopen hetzelfde item in meerdere kleuren, als kleuroptie binnen
+één product of als losse producten met dezelfde naam ("Work Pant - Black", "Work Pant - Sand").
+De voorraadcheck vindt die kleuren en zet ze in `colorways` (naam, kleur voor de filter, link,
+foto's en uitverkochte maten per kleur). Het item zelf krijgt `colorName` en de kleur
+verdwijnt uit de naam ("Work Pant"). Nieuwe kleuren komen er vanzelf bij, uitverkochte kleuren
+gaan eraf. Klopt een geraden kleur niet (bijv. "Mauve" als `purple`), pas `color` dan gewoon
+aan: bestaande namen, kleuren en foto's laat de check staan. Een nieuw item met kleuren vul
+je direct met `npm run stock`.
 
 Als er iets verandert, draaien lint, typecheck en build; daarna commit de Action naar
 `main` en deployt de site opnieuw. Instellen:

@@ -2,7 +2,16 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-/** Productfoto, of een nette placeholder zolang er nog geen foto is. */
+/**
+ * Productfoto in een vast kader, of een nette placeholder zolang er nog geen foto is.
+ *
+ * Merken fotograferen allemaal anders (los op wit, op een grijze studiomuur, buiten). Om
+ * dat gelijk te trekken staat elke foto op dezelfde lichte achtergrond met dezelfde rand
+ * eromheen (padding in procenten van de breedte, dus overal even dik), wordt hij nooit
+ * bijgesneden (object-contain) en valt een witte achtergrond weg in het kader
+ * (mix-blend-multiply). De achtergrond zit op dit element zelf, zodat multiply ook werkt
+ * als `className` een opacity of transform toevoegt.
+ */
 export function ProductImage({
   src,
   alt,
@@ -20,14 +29,18 @@ export function ProductImage({
 }) {
   if (src) {
     return (
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes={sizes}
-        preload={preload}
-        className={cn("object-cover", className)}
-      />
+      <div className={cn("absolute inset-0 bg-frame p-[7%]", className)}>
+        <div className="relative size-full">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes={sizes}
+            preload={preload}
+            className="object-contain mix-blend-multiply"
+          />
+        </div>
+      </div>
     );
   }
 

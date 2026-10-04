@@ -50,6 +50,15 @@ function validate(): void {
     for (const size of p.soldOutSizes ?? []) {
       if (!p.sizes?.includes(size)) errors.push(`${where}: soldOutSizes bevat "${size}" maar die staat niet in sizes`);
     }
+    for (const colorway of p.colorways ?? []) {
+      const at = `${where}, kleur "${colorway.name}"`;
+      if (!(colorway.color in COLORS)) errors.push(`${at}: onbekende kleur "${colorway.color}"`);
+      if (!isValidUrl(colorway.url)) errors.push(`${at}: url moet met http(s):// beginnen`);
+      if (colorway.images.length === 0) errors.push(`${at}: voeg minstens één foto toe`);
+      for (const size of colorway.soldOutSizes ?? []) {
+        if (!p.sizes?.includes(size)) errors.push(`${at}: soldOutSizes bevat "${size}" maar die staat niet in sizes`);
+      }
+    }
     if (p.drop) {
       const drop = dropById.get(p.drop);
       if (!drop) errors.push(`${where}: onbekende drop "${p.drop}"`);
@@ -73,6 +82,9 @@ const catalog: CatalogItem[] = products.map((p) => {
     ...p,
     brandName: brandById.get(p.brand)!.name,
     releaseAt: p.releaseAt ?? drop?.date,
+    colors: p.colorways?.length
+      ? [...new Set([...(p.colors ?? []), ...p.colorways.map((c) => c.color)])]
+      : p.colors,
     dropTitle: drop?.title,
   };
 });

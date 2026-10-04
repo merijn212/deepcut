@@ -32,6 +32,13 @@ export interface Product {
   /** Maten die op zijn (worden doorgestreept) */
   soldOutSizes?: string[];
   colors?: ColorId[];
+  /** Naam van de kleur van dit item zoals de shop hem noemt, bijv. "Sand" */
+  colorName?: string;
+  /**
+   * Andere kleuren van hetzelfde item in de shop van het merk. De voorraadcheck vult
+   * en houdt deze lijst bij; zie README.md.
+   */
+  colorways?: Colorway[];
   description?: string;
   /** Link naar het item in de shop van het merk */
   url?: string;
@@ -51,6 +58,22 @@ export interface Product {
   tags?: string[];
 }
 
+/** Een andere kleur van een item. Prijs en maten zijn dezelfde als die van het item. */
+export interface Colorway {
+  /** Kleurnaam zoals de shop hem noemt, bijv. "Navy" of "Blue Check" */
+  name: string;
+  /** Kleur uit COLORS in taxonomy.ts, voor de kleurfilter */
+  color: ColorId;
+  /** Link naar deze kleur in de shop van het merk */
+  url: string;
+  /** Foto's van deze kleur; de eerste is ook het kleurstaal op de productpagina */
+  images: string[];
+  /** Maten die in deze kleur op zijn */
+  soldOutSizes?: string[];
+  /** Deze kleur is helemaal uitverkocht */
+  soldOut?: boolean;
+}
+
 export interface Drop {
   /** Unieke slug, wordt gebruikt in de URL: /drops/<id> */
   id: string;
@@ -65,7 +88,10 @@ export interface Drop {
   url?: string;
 }
 
-/** Product verrijkt met merknaam; releaseAt is het effectieve moment (eigen datum of die van de drop). */
+/**
+ * Product verrijkt met merknaam; releaseAt is het effectieve moment (eigen datum of die van
+ * de drop) en `colors` bevat ook de kleuren uit `colorways`, zodat de kleurfilter ze vindt.
+ */
 export interface CatalogItem extends Product {
   brandName: string;
   dropTitle?: string;
