@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps<"/product/[id]">): 
   if (!item) return {};
   return {
     title: `${item.name} · ${item.brandName}`,
-    description: item.description ?? `${item.name} van ${item.brandName}`,
+    description: item.description ?? `${item.name} by ${item.brandName}`,
     openGraph: item.images?.[0] ? { images: [item.images[0]] } : undefined,
   };
 }
@@ -53,7 +53,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
   const shopUrl = item.url ?? brand.website;
   const more = sortItems(
     getItemsByBrand(brand.id).filter((other) => other.id !== item.id),
-    "nieuw",
+    "newest",
     now,
   ).slice(0, 4);
 
@@ -62,7 +62,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
       <nav className="mb-6 flex flex-wrap gap-1.5 font-mono text-[11px] uppercase tracking-wider text-muted">
         <Link href="/shop" className="hover:text-fg">Shop</Link>
         <span>/</span>
-        <Link href={`/shop?categorie=${item.category}`} className="hover:text-fg">{categoryLabel}</Link>
+        <Link href={`/shop?category=${item.category}`} className="hover:text-fg">{categoryLabel}</Link>
         <span>/</span>
         <span className="text-fg">{item.name}</span>
       </nav>
@@ -79,7 +79,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
             <ItemBadges status={status} isNew={isNew(item, now)} onSale={isOnSale(item)} />
           </div>
           <Link
-            href={`/merken/${brand.id}`}
+            href={`/brands/${brand.id}`}
             className="mt-3 inline-block font-mono text-xs uppercase tracking-wider text-muted hover:text-fg"
           >
             {brand.name}
@@ -92,7 +92,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
           {status === "upcoming" && item.releaseAt && (
             <div className="mt-6 border border-accent p-4">
               <p className="font-mono text-[11px] uppercase tracking-wider text-muted">
-                {drop ? `Onderdeel van drop: ${drop.title}` : "Release"}
+                {drop ? `Part of the drop: ${drop.title}` : "Release"}
               </p>
               <p className="mt-1 font-medium">{formatDateTime(item.releaseAt)}</p>
               <Countdown to={item.releaseAt} className="mt-1 block text-xl text-accent" />
@@ -101,7 +101,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
 
           {sizes.length > 0 && (
             <div className="mt-6">
-              <p className="mb-2 font-mono text-[11px] uppercase tracking-wider text-muted">Maten</p>
+              <p className="mb-2 font-mono text-[11px] uppercase tracking-wider text-muted">Sizes</p>
               <ul className="flex flex-wrap gap-1.5">
                 {sizes.map((size) => {
                   const out = status === "sold-out" || item.soldOutSizes?.includes(size);
@@ -123,7 +123,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
 
           {item.colors && item.colors.length > 0 && (
             <div className="mt-6">
-              <p className="mb-2 font-mono text-[11px] uppercase tracking-wider text-muted">Kleur</p>
+              <p className="mb-2 font-mono text-[11px] uppercase tracking-wider text-muted">Colour</p>
               <ul className="flex flex-wrap gap-3">
                 {item.colors.map((color) => (
                   <li key={color} className="flex items-center gap-1.5 text-sm">
@@ -148,7 +148,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
                 rel="noreferrer"
                 className="bg-fg px-5 py-3.5 text-center font-mono text-xs uppercase tracking-wider text-bg hover:opacity-85"
               >
-                Shop bij {brand.name} ↗
+                Shop at {brand.name} ↗
               </a>
             )}
             {status === "upcoming" && drop && (
@@ -156,12 +156,12 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
                 href={`/drops/${drop.id}`}
                 className="bg-accent px-5 py-3.5 text-center font-mono text-xs uppercase tracking-wider text-accent-fg hover:opacity-85"
               >
-                Bekijk de drop
+                View the drop
               </Link>
             )}
             {status === "sold-out" && (
               <span className="border border-line px-5 py-3.5 text-center font-mono text-xs uppercase tracking-wider text-muted">
-                Uitverkocht
+                Sold out
               </span>
             )}
             {brand.instagram && (
@@ -171,19 +171,19 @@ export default async function ProductPage({ params }: PageProps<"/product/[id]">
                 rel="noreferrer"
                 className="border border-fg px-5 py-3.5 text-center font-mono text-xs uppercase tracking-wider hover:bg-fg hover:text-bg"
               >
-                {status === "upcoming" ? "Volg" : "Bekijk"} @{brand.instagram} op Instagram ↗
+                {status === "upcoming" ? "Follow" : "View"} @{brand.instagram} on Instagram ↗
               </a>
             )}
           </div>
           <p className="mt-3 text-xs text-muted">
-            Je rekent af in de shop van {brand.name}. Check daar de actuele prijs en voorraad.
+            Checkout happens on the {brand.name} store. Check there for current price and stock.
           </p>
         </div>
       </div>
 
       {more.length > 0 && (
         <section className="pt-20">
-          <SectionHeading title={`Meer van ${brand.name}`} href={`/merken/${brand.id}`} />
+          <SectionHeading title={`More from ${brand.name}`} href={`/brands/${brand.id}`} />
           <ProductGrid items={more} now={now} />
         </section>
       )}

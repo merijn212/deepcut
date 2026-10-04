@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "Deepcut",
-  tagline: "Deep cuts van Instagram. De labels die je feed nog niet kent.",
+  tagline: "Deep cuts from Instagram. The labels your feed hasn't found yet.",
   description:
-    "Gecureerde shop met kleding van niche Instagram-merken: nieuwe items, upcoming drops en alles filterbaar op type, merk, maat en kleur.",
+    "A curated shop for niche Instagram clothing brands: new arrivals, upcoming drops, and everything filterable by type, brand, size and colour.",
   // Je eigen Instagram-handle (zonder @). Laat leeg om de link te verbergen.
   instagram: "",
-  locale: "nl-NL",
+  locale: "en-GB",
   currency: "EUR",
   timeZone: "Europe/Amsterdam",
   // Hoeveel dagen een item als "Nieuw" gemarkeerd blijft na toevoegen of release.

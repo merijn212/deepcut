@@ -23,14 +23,14 @@ npm run build      # productie-build (faalt bij fouten in de data)
 | ---------------- | --------------------------------------------------------------- |
 | `/`              | Home: upcoming drops, nieuw binnen, uitgelicht, types, merken   |
 | `/shop`          | Alle items met filters, zoeken en sorteren (filters staan in de URL) |
-| `/shop?nieuw=1`  | Alleen nieuwe items                                             |
+| `/shop?new=1`    | Alleen nieuwe items                                             |
 | `/product/[id]`  | Itempagina met foto's, maten, kleur en link naar de shop van het merk |
 | `/drops`         | Upcoming en eerdere drops                                       |
 | `/drops/[id]`    | Eén drop met countdown en de items erin                         |
-| `/merken`        | Alle merken                                                     |
-| `/merken/[id]`   | Merkpagina met Instagram, webshop, drops en items               |
+| `/brands`        | Alle merken                                                     |
+| `/brands/[id]`   | Merkpagina met Instagram, webshop, drops en items               |
 
-Filterlinks kun je delen, bijvoorbeeld `/shop?categorie=hoodies&maat=M&kleur=zwart`.
+Filterlinks kun je delen, bijvoorbeeld `/shop?category=hoodies&size=M&color=black`.
 
 ## Items toevoegen
 
@@ -60,7 +60,7 @@ Filterlinks kun je delen, bijvoorbeeld `/shop?categorie=hoodies&maat=M&kleur=zwa
   images: ["/items/merknaam/boxy-hoodie-1.jpg", "/items/merknaam/boxy-hoodie-2.jpg"],
   sizes: ["S", "M", "L", "XL"],
   soldOutSizes: ["S"],              // optioneel: worden doorgestreept
-  colors: ["zwart"],                // zie COLORS in src/data/taxonomy.ts
+  colors: ["black"],                // zie COLORS in src/data/taxonomy.ts
   description: "Heavyweight hoodie met verlaagde schouders.",
   url: "https://merknaam.com/products/boxy-hoodie",
   addedAt: "2026-10-04",            // vandaag; bepaalt het "Nieuw"-label
@@ -109,8 +109,8 @@ merken, drops of kleuren en ongeldige datums of URL's geven een duidelijke foutm
 Categorieën en kleuren pas je aan in `src/data/taxonomy.ts`; sitenaam, tagline en je eigen
 Instagram in `src/config/site.ts`.
 
-De huidige items, merken en drops zijn **voorbeelddata** (Demo Studio, Demo Supply, Demo
-Club) en kunnen weg zodra de echte items erin staan.
+De site zelf is Engelstalig; teksten staan direct in de componenten in `src/app` en
+`src/components`.
 
 ## Online zetten
 

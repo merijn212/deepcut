@@ -22,26 +22,26 @@ export function generateStaticParams() {
   return getBrands().map((brand) => ({ id: brand.id }));
 }
 
-export async function generateMetadata({ params }: PageProps<"/merken/[id]">): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/brands/[id]">): Promise<Metadata> {
   const { id } = await params;
   const brand = getBrand(id);
   if (!brand) return {};
   return { title: brand.name, description: brand.description };
 }
 
-export default async function BrandPage({ params }: PageProps<"/merken/[id]">) {
+export default async function BrandPage({ params }: PageProps<"/brands/[id]">) {
   const { id } = await params;
   const brand = getBrand(id);
   if (!brand) notFound();
 
   const now = getRenderTime();
-  const items = sortItems(getItemsByBrand(brand.id), "nieuw", now);
+  const items = sortItems(getItemsByBrand(brand.id), "newest", now);
   const drops = getUpcomingDrops(now).filter((d) => d.brand === brand.id);
 
   return (
     <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
       <nav className="mb-6 flex gap-1.5 font-mono text-[11px] uppercase tracking-wider text-muted">
-        <Link href="/merken" className="hover:text-fg">Merken</Link>
+        <Link href="/brands" className="hover:text-fg">Brands</Link>
         <span>/</span>
         <span className="text-fg">{brand.name}</span>
       </nav>
@@ -72,11 +72,11 @@ export default async function BrandPage({ params }: PageProps<"/merken/[id]">) {
               rel="noreferrer"
               className="border border-fg px-5 py-3 font-mono text-xs uppercase tracking-wider hover:bg-fg hover:text-bg"
             >
-              Webshop ↗
+              Store ↗
             </a>
           )}
           <Link
-            href={`/shop?merk=${brand.id}`}
+            href={`/shop?brand=${brand.id}`}
             className="border border-line px-5 py-3 font-mono text-xs uppercase tracking-wider hover:border-fg"
           >
             Filter in shop
@@ -102,11 +102,11 @@ export default async function BrandPage({ params }: PageProps<"/merken/[id]">) {
       )}
 
       <section className="pt-10">
-        <SectionHeading eyebrow={`${items.length} items`} title="Alle items" />
+        <SectionHeading eyebrow={`${items.length} ${items.length === 1 ? "item" : "items"}`} title="All items" />
         {items.length > 0 ? (
           <ProductGrid items={items} now={now} />
         ) : (
-          <p className="text-muted">Nog geen items van dit merk.</p>
+          <p className="text-muted">No items from this brand yet.</p>
         )}
       </section>
     </div>

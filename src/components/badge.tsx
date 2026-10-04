@@ -35,9 +35,9 @@ export function ItemBadges({
 }) {
   return (
     <>
-      {status === "upcoming" && <Badge variant="upcoming">Binnenkort</Badge>}
-      {status === "sold-out" && <Badge variant="sold-out">Uitverkocht</Badge>}
-      {isNew && <Badge variant="new">Nieuw</Badge>}
+      {status === "upcoming" && <Badge variant="upcoming">Dropping soon</Badge>}
+      {status === "sold-out" && <Badge variant="sold-out">Sold out</Badge>}
+      {isNew && <Badge variant="new">New</Badge>}
       {onSale && status !== "sold-out" && <Badge variant="sale">Sale</Badge>}
     </>
   );

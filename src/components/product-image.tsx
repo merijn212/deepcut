@@ -43,7 +43,7 @@ export function ProductImage({
     >
       <span className="truncate font-mono text-[10px] uppercase tracking-wider">{label}</span>
       <span className="hidden shrink-0 pl-2 font-mono text-[10px] uppercase tracking-wider sm:inline">
-        Foto volgt
+        Photo soon
       </span>
     </div>
   );

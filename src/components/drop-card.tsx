@@ -55,7 +55,7 @@ export function DropCard({
               <Countdown to={drop.date} className="text-accent" />
             </>
           ) : (
-            <span className="text-muted">Gedropt op {formatLongDate(drop.date)}</span>
+            <span className="text-muted">Dropped {formatLongDate(drop.date)}</span>
           )}
           {itemCount > 0 && (
             <span className="text-muted">

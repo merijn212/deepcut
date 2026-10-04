@@ -2,7 +2,7 @@
 
 # Deepcut
 
-Gecureerde shop voor niche Instagram-kledingmerken. UI-teksten zijn Nederlands.
+Gecureerde shop voor niche Instagram-kledingmerken. UI-teksten zijn Engels (en-GB); README en code-comments zijn Nederlands.
 
 - Alle content staat in `src/data/` (`brands.ts`, `products.ts`, `drops.ts`); er is geen
   database of CMS. Veldenuitleg staat in `README.md` en in de JSDoc van `src/data/types.ts`.
@@ -10,7 +10,7 @@ Gecureerde shop voor niche Instagram-kledingmerken. UI-teksten zijn Nederlands.
 - `src/lib/catalog.ts` is server-only en valideert de data bij het laden. Client components
   krijgen `CatalogItem[]` als props en gebruiken de pure helpers in `src/lib/status.ts`
   en `src/lib/filters.ts`.
-- Shopfilters staan in de URL (`categorie`, `merk`, `maat`, `kleur`, `status`, `nieuw`,
+- Shopfilters staan in de URL (`category`, `brand`, `size`, `color`, `status`, `new`,
   `sale`, `min`, `max`, `sort`, `q`) en worden bijgewerkt met `window.history.replaceState`.
 - Tijdsafhankelijke status ("Nieuw", "Binnenkort") wordt op de server bepaald via
   `getRenderTime()` (revalidate elk uur, zie `app/layout.tsx`); countdowns gebruiken `useNow()`.

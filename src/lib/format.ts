@@ -54,8 +54,8 @@ export function formatCountdown(ms: number): string {
   const seconds = total % 60;
   const pad = (n: number) => String(n).padStart(2, "0");
   return days > 0
-    ? `${days}d ${pad(hours)}u ${pad(minutes)}m ${pad(seconds)}s`
-    : `${pad(hours)}u ${pad(minutes)}m ${pad(seconds)}s`;
+    ? `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`
+    : `${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
 }
 
 export function instagramUrl(handle: string): string {

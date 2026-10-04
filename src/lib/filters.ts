@@ -2,7 +2,7 @@ import { getCategoryLabel, type CategoryId } from "@/data/taxonomy";
 import { getNewSince, getStatus, isNew, isOnSale, type ItemStatus } from "./status";
 
 // Filterlogica voor de shop. Alle filters staan in de URL, zodat je een gefilterde
-// shop kunt delen of linken (bijv. /shop?categorie=hoodies&maat=M).
+// shop kunt delen of linken (bijv. /shop?category=hoodies&size=M).
 
 export interface FilterableItem {
   id: string;
@@ -23,31 +23,31 @@ export interface FilterableItem {
 
 export const PARAMS = {
   q: "q",
-  category: "categorie",
-  brand: "merk",
-  size: "maat",
-  color: "kleur",
+  category: "category",
+  brand: "brand",
+  size: "size",
+  color: "color",
   status: "status",
-  onlyNew: "nieuw",
+  onlyNew: "new",
   onlySale: "sale",
   min: "min",
   max: "max",
   sort: "sort",
 } as const;
 
-export type SortKey = "nieuw" | "binnenkort" | "prijs-op" | "prijs-af";
+export type SortKey = "newest" | "upcoming" | "price-asc" | "price-desc";
 
 export const SORT_OPTIONS: { value: SortKey; label: string }[] = [
-  { value: "nieuw", label: "Nieuwste" },
-  { value: "binnenkort", label: "Binnenkort eerst" },
-  { value: "prijs-op", label: "Prijs laag - hoog" },
-  { value: "prijs-af", label: "Prijs hoog - laag" },
+  { value: "newest", label: "Newest" },
+  { value: "upcoming", label: "Dropping soon" },
+  { value: "price-asc", label: "Price: low to high" },
+  { value: "price-desc", label: "Price: high to low" },
 ];
 
 export const STATUS_OPTIONS: { value: ItemStatus; param: string; label: string }[] = [
-  { value: "available", param: "beschikbaar", label: "Beschikbaar" },
-  { value: "upcoming", param: "binnenkort", label: "Binnenkort" },
-  { value: "sold-out", param: "uitverkocht", label: "Uitverkocht" },
+  { value: "available", param: "available", label: "Available" },
+  { value: "upcoming", param: "upcoming", label: "Dropping soon" },
+  { value: "sold-out", param: "sold-out", label: "Sold out" },
 ];
 
 export interface Filters {
@@ -88,7 +88,7 @@ export function parseFilters(params: URLSearchParams): Filters {
     onlySale: params.get(PARAMS.onlySale) === "1",
     minPrice: parseNumber(params.get(PARAMS.min)),
     maxPrice: parseNumber(params.get(PARAMS.max)),
-    sort: SORT_OPTIONS.some((o) => o.value === sort) ? (sort as SortKey) : "nieuw",
+    sort: SORT_OPTIONS.some((o) => o.value === sort) ? (sort as SortKey) : "newest",
   };
 }
 
@@ -196,11 +196,11 @@ export function sortItems<T extends FilterableItem>(items: T[], sort: SortKey, n
     const rank = soldOutRank(a) - soldOutRank(b);
     if (rank !== 0) return rank;
     switch (sort) {
-      case "prijs-op":
+      case "price-asc":
         return a.price - b.price || newest(a, b);
-      case "prijs-af":
+      case "price-desc":
         return b.price - a.price || newest(a, b);
-      case "binnenkort": {
+      case "upcoming": {
         const ua = getStatus(a, now) === "upcoming";
         const ub = getStatus(b, now) === "upcoming";
         if (ua && ub) return Date.parse(a.releaseAt!) - Date.parse(b.releaseAt!);
