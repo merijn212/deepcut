@@ -50,7 +50,7 @@ export default async function BrandPage({ params }: PageProps<"/brands/[id]">) {
         {brand.country && (
           <p className="font-mono text-xs uppercase tracking-wider text-muted">{brand.country}</p>
         )}
-        <h1 className="mt-1 text-5xl font-black uppercase leading-[0.9] tracking-tighter sm:text-7xl">
+        <h1 className="mt-1 font-display text-6xl leading-[0.9] tracking-tight sm:text-8xl">
           {brand.name}
         </h1>
         {brand.description && <p className="mt-5 max-w-2xl text-lg text-muted">{brand.description}</p>}

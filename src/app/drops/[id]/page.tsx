@@ -50,7 +50,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
         >
           {brand.name}
         </Link>
-        <h1 className="mt-2 text-5xl font-black uppercase leading-[0.9] tracking-tighter sm:text-7xl">
+        <h1 className="mt-2 font-display text-6xl leading-[0.9] tracking-tight sm:text-8xl">
           {drop.title}
         </h1>
         {upcoming ? (
