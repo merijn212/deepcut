@@ -1,0 +1,32 @@
+import Link from "next/link";
+
+import { siteConfig } from "@/config/site";
+import { instagramUrl } from "@/lib/format";
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-24 border-t border-line">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-[1fr_auto] sm:px-6">
+        <div className="max-w-md">
+          <p className="text-lg font-black uppercase tracking-tighter">{siteConfig.name}</p>
+          <p className="mt-2 text-sm text-muted">{siteConfig.tagline}</p>
+          <p className="mt-4 text-xs text-muted">
+            Je rekent af in de shop van het merk zelf. Prijzen en beschikbaarheid kunnen
+            afwijken; check altijd de site van het merk.
+          </p>
+        </div>
+        <nav className="flex flex-col gap-2 font-mono text-xs uppercase tracking-wider">
+          <Link href="/shop" className="hover:underline">Shop</Link>
+          <Link href="/shop?nieuw=1" className="hover:underline">Nieuw</Link>
+          <Link href="/drops" className="hover:underline">Drops</Link>
+          <Link href="/merken" className="hover:underline">Merken</Link>
+          {siteConfig.instagram && (
+            <a href={instagramUrl(siteConfig.instagram)} className="hover:underline" target="_blank" rel="noreferrer">
+              Instagram ↗
+            </a>
+          )}
+        </nav>
+      </div>
+    </footer>
+  );
+}
