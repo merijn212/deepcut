@@ -2,6 +2,15 @@ import type { Brand } from "./types";
 
 export const brands: Brand[] = [
   {
+    id: "yitai",
+    name: "YITAI",
+    instagram: "yitai.la",
+    website: "https://www.yitai.la",
+    country: "US",
+    description:
+      "Los Angeles denim label: sanforized selvedge jeans with honest sizing, aged washes and long, vintage-inspired silhouettes.",
+  },
+  {
     id: "reaven",
     name: "Reaven",
     instagram: "reaven",
