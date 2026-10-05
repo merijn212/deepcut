@@ -4,6 +4,32 @@ import type { Product } from "./types";
 // Prijzen zijn de europrijzen uit de shop van het merk.
 export const products: Product[] = [
   {
+    id: "no-faith-studios-button-knit-crewneck-grey",
+    name: "Button Knit Crewneck",
+    colorName: "Grey",
+    brand: "no-faith-studios",
+    category: "knitwear",
+    price: 110,
+    images: [
+      "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/18B1951B-1ED1-416E-87C8-3C48CFC81FA3.jpg?v=1791011655",
+      "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/C0F3856C-9BDE-45B8-A6FB-1EC3607F62E9.jpg?v=1791011654",
+      "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/434517BB-8728-4B72-BFEF-337B8785B95E.jpg?v=1791011654",
+      "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/CA669903-FDA1-4CD4-92B1-D25902ADED28.jpg?v=1791011654",
+      "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/38D78C80-96E4-42B2-B607-A331259619A1.jpg?v=1791011654",
+      "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/B89956E9-7108-4870-96DA-7A514C463476.jpg?v=1791011654",
+      "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/3B9F5E7E-0734-4BAE-9F63-0D43A160A398.jpg?v=1791011654",
+      "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/E006799F-4B22-4322-83C6-9FA7494712E9.jpg?v=1791011654",
+      "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/74C6A167-7C16-4640-A293-13403D0993DF.jpg?v=1791011654",
+    ],
+    sizes: ["1", "2", "3"],
+    colors: ["grey"],
+    description:
+      "A grey knit crewneck with a three-button placket at the shoulder. The smooth knit body is paired with textured ribbed raglan sleeves, finished with ribbed cuffs and hem. Relaxed, slightly cropped fit.",
+    url: "https://nofaithstudios.com/products/button-knit-crewneck-grey",
+    addedAt: "2026-10-05T22:00:00+02:00",
+    tags: ["knit", "crewneck", "button placket", "raglan", "ribbed", "cropped", "fall26"],
+  },
+  {
     id: "yitai-vintage-wash-slub-selvedge-bootcut-denim",
     name: "Slub Selvedge Bootcut Denim",
     colorName: "Vintage Wash",

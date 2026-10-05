@@ -91,6 +91,7 @@ export interface Drop {
   /**
    * Eerste foto's van de drop, bijv. uit de Instagram-post of story van het merk. Handig zolang
    * er nog geen items zijn. Zet ze in /public/items/<merk>/: links naar Instagram verlopen.
+   * Drie dagen na de drop haalt scripts/cleanup.mjs ze automatisch weg, inclusief de bestanden.
    */
   previews?: DropPreview[];
   /** De Instagram-post waar `previews` vandaan komen */
