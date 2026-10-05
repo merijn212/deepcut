@@ -31,7 +31,7 @@ jobs:
       # Zet op "false" om uitverkochte items te laten staan met soldOut: true.
       REMOVE_SOLD_OUT: "true"
       # Zoveel dagen na een drop worden de previews (en hun foto's) opgeruimd.
-      PREVIEW_DAYS_AFTER_DROP: "3"
+      PREVIEW_DAYS_AFTER_DROP: "7"
     steps:
       - uses: actions/checkout@v4
         with:

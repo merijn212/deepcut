@@ -101,7 +101,7 @@ Koppel items aan een drop met `drop: "merknaam-fw26"`.
 Een upcoming drop heeft vaak nog geen items. Zet dan een paar foto's uit de Instagram-post of
 story van het merk in `previews`: de droppagina toont ze als "First look" met een link naar de
 post, en de dropkaart op de homepage krijgt de eerste foto als thumbnail. Download de foto's
-naar `public/items/<merk>/`, want links naar Instagram verlopen na een paar dagen. Drie dagen na
+naar `public/items/<merk>/`, want links naar Instagram verlopen na een paar dagen. Een week na
 de drop worden de previews en de bestanden vanzelf opgeruimd (zie "Opslag klein houden").
 
 ### Foto's
@@ -167,8 +167,9 @@ je direct met `npm run stock`.
 
 **Opslag klein houden.** Na de voorraadcheck draait `scripts/cleanup.mjs`:
 
-- drops die meer dan 3 dagen geleden zijn, verliezen hun `previews` (de "First look"-foto's);
-  de items van de drop staan dan in de shop met de foto's van het merk;
+- drops die meer dan 7 dagen geleden zijn, verliezen hun `previews` (de "First look"-foto's);
+  de items van de drop staan dan in de shop met de foto's van het merk, en de dropkaart
+  toont voortaan de foto van het eerste item uit de drop;
 - foto's in `public/items/` waar niets in `src/` meer naar verwijst, worden verwijderd. Zo
   gaan ook lokale foto's van uitverkochte (en dus verwijderde) items weg.
 
