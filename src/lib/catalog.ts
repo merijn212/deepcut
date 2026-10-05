@@ -34,6 +34,13 @@ function validate(): void {
   for (const drop of drops) {
     if (!brandIds.has(drop.brand)) errors.push(`Drop "${drop.id}": onbekend merk "${drop.brand}"`);
     if (!isValidDate(drop.date)) errors.push(`Drop "${drop.id}": ongeldige datum "${drop.date}"`);
+    if (drop.url && !isValidUrl(drop.url)) errors.push(`Drop "${drop.id}": url moet met http(s):// beginnen`);
+    if (drop.instagramPost && !/^https:\/\/(www\.)?instagram\.com\//.test(drop.instagramPost)) {
+      errors.push(`Drop "${drop.id}": instagramPost moet een instagram.com-link zijn`);
+    }
+    for (const preview of drop.previews ?? []) {
+      if (!isValidUrl(preview.src)) errors.push(`Drop "${drop.id}": foto "${preview.src}" moet met / of http(s):// beginnen`);
+    }
   }
 
   for (const p of products) {

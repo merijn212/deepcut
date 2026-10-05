@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
@@ -22,12 +23,14 @@ export function DropCard({
   upcoming: boolean;
 }) {
   const date = new Date(drop.date);
+  const cover = drop.previews?.[0];
 
   return (
     <Link
       href={`/drops/${drop.id}`}
       className={cn(
-        "group grid grid-cols-[auto_1fr] gap-4 border p-4 transition-colors sm:gap-6 sm:p-5",
+        "group grid gap-4 border p-4 transition-colors sm:gap-6 sm:p-5",
+        cover ? "grid-cols-[auto_1fr_auto]" : "grid-cols-[auto_1fr]",
         upcoming ? "border-fg hover:bg-tile" : "border-line hover:border-fg",
       )}
     >
@@ -64,6 +67,17 @@ export function DropCard({
           )}
         </div>
       </div>
+      {cover && (
+        <div className="relative aspect-[4/5] w-16 self-start overflow-hidden rounded-sm bg-tile sm:w-24">
+          <Image
+            src={cover.src}
+            alt=""
+            fill
+            sizes="96px"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        </div>
+      )}
     </Link>
   );
 }

@@ -86,9 +86,22 @@ export interface Drop {
   /** Moment van de drop inclusief tijdzone, bijv. "2026-10-18T18:00:00+02:00" */
   date: string;
   description?: string;
-  image?: string;
   /** Waar de drop live gaat (shop, Instagram-post, ...) */
   url?: string;
+  /**
+   * Eerste foto's van de drop, bijv. uit de Instagram-post of story van het merk. Handig zolang
+   * er nog geen items zijn. Zet ze in /public/items/<merk>/: links naar Instagram verlopen.
+   */
+  previews?: DropPreview[];
+  /** De Instagram-post waar `previews` vandaan komen */
+  instagramPost?: string;
+}
+
+export interface DropPreview {
+  /** Pad in /public (bijv. "/items/merk/drop-01.jpg") of externe URL */
+  src: string;
+  /** Wat er op de foto staat, bijv. "Thermal Zip Hoodie" */
+  caption?: string;
 }
 
 /**

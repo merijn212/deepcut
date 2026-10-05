@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Countdown } from "@/components/countdown";
+import { DropPreviews } from "@/components/drop-previews";
 import { ProductGrid } from "@/components/product-card";
 import { SectionHeading } from "@/components/section-heading";
 import { getBrand, getDrop, getDrops, getItemsByDrop, getRenderTime } from "@/lib/catalog";
@@ -35,6 +36,7 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
   const brand = getBrand(drop.brand)!;
   const upcoming = Date.parse(drop.date) > now;
   const items = sortItems(getItemsByDrop(drop.id), "price-desc", now);
+  const previews = drop.previews ?? [];
 
   return (
     <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
@@ -66,9 +68,9 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
         )}
         {drop.description && <p className="mt-6 max-w-2xl text-lg text-muted">{drop.description}</p>}
         <div className="mt-6 flex flex-wrap gap-2">
-          {drop.url && (
+          {(drop.url ?? brand.website) && (
             <a
-              href={drop.url}
+              href={drop.url ?? brand.website}
               target="_blank"
               rel="noreferrer"
               className="bg-fg rounded-full px-6 py-3 text-sm font-medium text-bg hover:opacity-85"
@@ -89,14 +91,49 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
         </div>
       </header>
 
-      <section className="pt-10">
-        <SectionHeading title={upcoming ? "In this drop" : "From this drop"} />
-        {items.length > 0 ? (
+      {items.length > 0 && (
+        <section className="pt-10">
+          <SectionHeading title={upcoming ? "In this drop" : "From this drop"} />
           <ProductGrid items={items} now={now} />
-        ) : (
+        </section>
+      )}
+
+      {previews.length > 0 && (
+        <section className="pt-10">
+          <div className="mb-6 flex items-end justify-between gap-4 border-b border-line pb-3">
+            <div>
+              <p className="mb-1 font-mono text-[11px] uppercase tracking-wider text-muted">
+                {brand.instagram ? `From @${brand.instagram} on Instagram` : `From ${brand.name}`}
+              </p>
+              <h2 className="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">First look</h2>
+            </div>
+            {drop.instagramPost && (
+              <a
+                href={drop.instagramPost}
+                target="_blank"
+                rel="noreferrer"
+                className="shrink-0 text-sm font-medium text-muted transition-colors hover:text-fg"
+              >
+                View the post
+                <ArrowUpRight aria-hidden className="ml-1 inline size-[1.1em] align-[-0.2em]" strokeWidth={1.75} />
+              </a>
+            )}
+          </div>
+          <DropPreviews previews={previews} label={`${brand.name} ${drop.title}`} />
+          {upcoming && items.length === 0 && (
+            <p className="mt-8 text-sm text-muted">
+              The pieces get their own pages here once the drop is live.
+            </p>
+          )}
+        </section>
+      )}
+
+      {items.length === 0 && previews.length === 0 && (
+        <section className="pt-10">
+          <SectionHeading title={upcoming ? "In this drop" : "From this drop"} />
           <p className="text-muted">Items from this drop will be added soon.</p>
-        )}
-      </section>
+        </section>
+      )}
     </div>
   );
 }

@@ -89,10 +89,19 @@ Status wordt automatisch bepaald:
   date: "2026-10-18T18:00:00+02:00", // altijd met tijdzone (+02:00 zomer, +01:00 winter)
   description: "Wat er in de drop zit.",
   url: "https://merknaam.com",        // optioneel
+  instagramPost: "https://www.instagram.com/p/...", // optioneel: bron van de previews
+  previews: [                          // optioneel: eerste foto's zolang er nog geen items zijn
+    { src: "/items/merknaam/fw26-01.jpg", caption: "Thermal Zip Hoodie" },
+  ],
 }
 ```
 
 Koppel items aan een drop met `drop: "merknaam-fw26"`.
+
+Een upcoming drop heeft vaak nog geen items. Zet dan een paar foto's uit de Instagram-post of
+story van het merk in `previews`: de droppagina toont ze als "First look" met een link naar de
+post, en de dropkaart op de homepage krijgt de eerste foto als thumbnail. Download de foto's
+naar `public/items/<merk>/`, want links naar Instagram verlopen na een paar dagen.
 
 ### Foto's
 

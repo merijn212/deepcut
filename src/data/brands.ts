@@ -2,6 +2,15 @@ import type { Brand } from "./types";
 
 export const brands: Brand[] = [
   {
+    id: "reaven",
+    name: "Reaven",
+    instagram: "reaven",
+    website: "https://www.reaven.co",
+    country: "IT",
+    description:
+      "Italian label, going since 2019. Everything is made in Italy: hand-finished bootcut denim, garment-dyed fleece, knits and shearling.",
+  },
+  {
     id: "no-maintenance",
     name: "No Maintenance",
     instagram: "nomaintenance",
