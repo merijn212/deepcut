@@ -1,5 +1,6 @@
 # Dagelijkse voorraadcheck: haalt uitverkochte items van de site en werkt
-# uitverkochte maten bij (zie scripts/check-stock.mjs). Wijzigingen worden
+# uitverkochte maten bij (zie scripts/check-stock.mjs). Daarna worden previews van
+# voorbije drops en ongebruikte foto's opgeruimd (scripts/cleanup.mjs). Wijzigingen worden
 # gecontroleerd (lint, typecheck, build) en dan op main gezet, waarna de site
 # automatisch opnieuw deployt.
 name: Stock check
@@ -29,6 +30,8 @@ jobs:
     env:
       # Zet op "false" om uitverkochte items te laten staan met soldOut: true.
       REMOVE_SOLD_OUT: "true"
+      # Zoveel dagen na een drop worden de previews (en hun foto's) opgeruimd.
+      PREVIEW_DAYS_AFTER_DROP: "3"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,10 +49,15 @@ jobs:
           STOCK_COMMIT_MESSAGE_FILE: ${{ runner.temp }}/stock-commit.txt
         run: npm run stock -- ${{ inputs.dry_run && '--dry-run' || '' }}
 
+      - name: Clean up images
+        env:
+          CLEANUP_COMMIT_MESSAGE_FILE: ${{ runner.temp }}/cleanup-commit.txt
+        run: npm run cleanup -- ${{ inputs.dry_run && '--dry-run' || '' }}
+
       - name: Detect changes
         id: diff
         run: |
-          if git diff --quiet -- src/data/products.ts; then
+          if git diff --quiet -- src/data public/items; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -65,7 +73,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add src/data/products.ts
-          git commit -F "$RUNNER_TEMP/stock-commit.txt"
+          git add src/data public/items
+          # Commitbericht van de voorraadcheck en/of het opschonen.
+          cat "$RUNNER_TEMP"/*-commit.txt > "$RUNNER_TEMP/commit.txt"
+          git commit -F "$RUNNER_TEMP/commit.txt"
           git pull --rebase origin main
           git push origin HEAD:main

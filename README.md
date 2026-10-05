@@ -101,13 +101,17 @@ Koppel items aan een drop met `drop: "merknaam-fw26"`.
 Een upcoming drop heeft vaak nog geen items. Zet dan een paar foto's uit de Instagram-post of
 story van het merk in `previews`: de droppagina toont ze als "First look" met een link naar de
 post, en de dropkaart op de homepage krijgt de eerste foto als thumbnail. Download de foto's
-naar `public/items/<merk>/`, want links naar Instagram verlopen na een paar dagen.
+naar `public/items/<merk>/`, want links naar Instagram verlopen na een paar dagen. Drie dagen na
+de drop worden de previews en de bestanden vanzelf opgeruimd (zie "Opslag klein houden").
 
 ### Foto's
 
-Zet foto's in `public/items/<merk>/` en verwijs ernaar als `/items/<merk>/bestand.jpg`.
-Staande foto's (4:5) passen het best. Externe URL's kan ook, maar dan moet het domein in
-`next.config.ts` onder `images.remotePatterns` staan (`cdn.shopify.com` staat er al in).
+Gebruik voor items de foto-URL's uit de shop van het merk (`https://cdn.shopify.com/...`):
+die worden niet in de repo opgeslagen en verdwijnen vanzelf mee als het item uitverkocht is.
+Andere domeinen moeten in `next.config.ts` onder `images.remotePatterns` staan.
+Alleen foto's die nergens online blijven staan (zoals Instagram-previews van een drop) zet je
+in `public/items/<merk>/` en verwijs je naar als `/items/<merk>/bestand.jpg`. Staande foto's
+(4:5) passen het best.
 Items zonder foto krijgen een placeholder.
 
 ### Controle
@@ -161,6 +165,16 @@ gaan eraf. Klopt een geraden kleur niet (bijv. "Mauve" als `purple`), pas `color
 aan: bestaande namen, kleuren en foto's laat de check staan. Een nieuw item met kleuren vul
 je direct met `npm run stock`.
 
+**Opslag klein houden.** Na de voorraadcheck draait `scripts/cleanup.mjs`:
+
+- drops die meer dan 3 dagen geleden zijn, verliezen hun `previews` (de "First look"-foto's);
+  de items van de drop staan dan in de shop met de foto's van het merk;
+- foto's in `public/items/` waar niets in `src/` meer naar verwijst, worden verwijderd. Zo
+  gaan ook lokale foto's van uitverkochte (en dus verwijderde) items weg.
+
+Lokaal: `npm run cleanup -- --dry-run` laat zien wat er weg zou gaan. Het aantal dagen pas je
+aan met `PREVIEW_DAYS_AFTER_DROP` in de workflow.
+
 Als er iets verandert, draaien lint, typecheck en build; daarna commit de Action naar
 `main` en deployt de site opnieuw. Instellen:
 
@@ -179,5 +193,5 @@ src/
   config/       site-instellingen
   data/         merken, items, drops, categorieën en kleuren  ← hier voeg je dingen toe
   lib/          catalogus + validatie, filterlogica, status, formattering
-scripts/        voorraadcheck (draait dagelijks via .github/workflows/stock-check.yml)
+scripts/        voorraadcheck en opschonen (draaien dagelijks via .github/workflows/stock-check.yml)
 ```
