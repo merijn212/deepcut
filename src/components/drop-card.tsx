@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
-import type { Brand, Drop } from "@/data/types";
+import type { Brand, CatalogItem, Drop } from "@/data/types";
 import { cn } from "@/lib/cn";
 import { formatDateTime, formatLongDate } from "@/lib/format";
 import { Countdown } from "./countdown";
@@ -14,16 +14,18 @@ const monthFormatter = new Intl.DateTimeFormat(locale, { month: "short", timeZon
 export function DropCard({
   drop,
   brand,
-  itemCount,
+  items,
   upcoming,
 }: {
   drop: Drop;
   brand?: Brand;
-  itemCount: number;
+  items: CatalogItem[];
   upcoming: boolean;
 }) {
   const date = new Date(drop.date);
-  const cover = drop.previews?.[0];
+  const itemCount = items.length;
+  // Eerste preview, of (als die na de drop zijn opgeruimd) de eerste foto van een item uit de drop.
+  const cover = drop.previews?.[0]?.src ?? items.find((item) => item.images?.length)?.images?.[0];
 
   return (
     <Link
@@ -70,7 +72,7 @@ export function DropCard({
       {cover && (
         <div className="relative aspect-[4/5] w-16 self-start overflow-hidden rounded-sm bg-tile sm:w-24">
           <Image
-            src={cover.src}
+            src={cover}
             alt=""
             fill
             sizes="96px"

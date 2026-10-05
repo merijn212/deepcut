@@ -94,7 +94,7 @@ export default async function BrandPage({ params }: PageProps<"/brands/[id]">) {
                 key={drop.id}
                 drop={drop}
                 brand={brand}
-                itemCount={getItemsByDrop(drop.id).length}
+                items={getItemsByDrop(drop.id)}
                 upcoming
               />
             ))}
