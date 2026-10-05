@@ -4,6 +4,31 @@ import type { Product } from "./types";
 // Prijzen zijn de europrijzen uit de shop van het merk.
 export const products: Product[] = [
   {
+    id: "yitai-vintage-wash-slub-selvedge-bootcut-denim",
+    name: "Slub Selvedge Bootcut Denim",
+    colorName: "Vintage Wash",
+    brand: "yitai",
+    category: "jeans",
+    price: 161.95,
+    images: [
+      "https://cdn.shopify.com/s/files/1/1788/3057/files/Frame173_39173f93-b54a-48a2-a16f-37ed07e61942.jpg",
+      "https://cdn.shopify.com/s/files/1/1788/3057/files/Frame115_1a4e3421-bfd1-42e5-9f0e-bc1ccdee1ac5.jpg",
+      "https://cdn.shopify.com/s/files/1/1788/3057/files/Frame117_5f56c988-c0b9-41cc-ab64-22cd21aac8a7.jpg",
+      "https://cdn.shopify.com/s/files/1/1788/3057/files/Frame136_a2421705-ead6-4a59-b2db-3563f68d27da.png",
+      "https://cdn.shopify.com/s/files/1/1788/3057/files/Frame116_b063f688-2c09-462b-9900-cdb6371a53f8.png",
+      "https://cdn.shopify.com/s/files/1/1788/3057/files/Frame118_6bbadbc7-6fe1-4464-ac1b-84ecc69c2617.png",
+      "https://cdn.shopify.com/s/files/1/1788/3057/files/Frame120_134eebbe-a8b4-4585-b3fc-a03ac9fc0655.png",
+      "https://cdn.shopify.com/s/files/1/1788/3057/files/Frame119_48e8c51c-c8d1-4bfc-bcff-57d3feebf653.png",
+    ],
+    sizes: ["28", "30", "32", "34", "36", "38"],
+    colors: ["blue"],
+    description:
+      "14 oz sanforized selvedge denim in 100% cotton, washed for heavy fading, whiskering and wear, with light and dark indigo for a broken-in look from day one. Fitted through the top, opening below the knee into a wide bootcut hem. Mid-rise, five pockets, contrast stitching, selvedge ID on the coin pocket and outseam, and a leather patch. True to size, in a 30 or 32 inch inseam.",
+    url: "https://www.yitai.la/products/vintage-fade-slub-selvedge-bootcut-denim",
+    addedAt: "2026-10-05T21:45:00+02:00",
+    tags: ["selvedge", "denim", "bootcut", "vintage wash", "faded", "whiskers", "mid-rise"],
+  },
+  {
     id: "no-maintenance-baggy-japanese-denim-light-wash-painter",
     name: "Baggy Painter Denim",
     colorName: "Light-Wash Painter",
