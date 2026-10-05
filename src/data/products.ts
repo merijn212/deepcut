@@ -156,7 +156,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/RonningEcommSept260107662.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/RonningEcommSept260085640.jpg",
         ],
-        soldOutSizes: ["28 L", "32 L"],
+        soldOutSizes: ["34 R", "28 L", "32 L"],
       },
     ],
     description:
