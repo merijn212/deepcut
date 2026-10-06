@@ -476,6 +476,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/415639A9-BE08-4069-8A73-F6055D7C93A3.jpg?v=1791010834",
     ],
     sizes: ["S", "M", "L", "XL"],
+    soldOutSizes: ["S"],
     colors: ["black"],
     description:
       "Black selvedge denim in a heavily washed finish, with deep fades and whiskering that bring out the character of the fabric. Cut in a bootcut silhouette with subtle wear marks and a button fly, for a pair that looks broken in from day one.",
