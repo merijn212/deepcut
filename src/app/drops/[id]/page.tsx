@@ -105,7 +105,9 @@ export default async function DropPage({ params }: PageProps<"/drops/[id]">) {
               <p className="mb-1 font-mono text-[11px] uppercase tracking-wider text-muted">
                 {brand.instagram ? `From @${brand.instagram} on Instagram` : `From ${brand.name}`}
               </p>
-              <h2 className="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">First look</h2>
+              <h2 className="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
+                {upcoming ? "First look" : "Lookbook"}
+              </h2>
             </div>
             {drop.instagramPost && (
               <a

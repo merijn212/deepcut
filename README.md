@@ -104,6 +104,10 @@ post, en de dropkaart op de homepage krijgt de eerste foto als thumbnail. Downlo
 naar `public/items/<merk>/`, want links naar Instagram verlopen na een paar dagen. Drie dagen na
 de drop worden de previews en de bestanden vanzelf opgeruimd (zie "Opslag klein houden").
 
+Na de drop: voeg de items toe met `drop: "<id>"`. De droppagina zet ze dan bovenaan onder
+"From this drop", en de previews blijven eronder staan als "Lookbook" tot het opruimen. De drop
+verhuist vanzelf van "Upcoming" naar "Past drops" op `/drops`.
+
 ### Foto's
 
 Gebruik voor items de foto-URL's uit de shop van het merk (`https://cdn.shopify.com/...`):
