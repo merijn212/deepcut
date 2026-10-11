@@ -53,7 +53,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_SH_2.jpg?v=1791216947",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
         ],
-        soldOutSizes: ["M", "XL", "XXL", "3XL"],
+        soldOutSizes: ["M", "L", "XL", "XXL", "3XL"],
       },
       {
         name: "Raw Black",
@@ -511,7 +511,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/Ronning_ec2_1923511.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/Ronning_ec2_1892510.jpg",
         ],
-        soldOutSizes: ["XS"],
+        soldOutSizes: ["XS", "M"],
       },
       {
         name: "Blue Check",
