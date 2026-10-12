@@ -71,7 +71,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_B_2_2.jpg?v=1791216947",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
         ],
-        soldOutSizes: ["M", "3XL"],
+        soldOutSizes: ["S", "M", "3XL"],
       },
     ],
     description:
@@ -288,6 +288,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_44722.heic?format=jpg",
     ],
     sizes: ["XS (W28/L28)", "S (W30/L30)", "M (W32/L32)", "L (W34/L34)", "XL (W36/L36)"],
+    soldOutSizes: ["XS (W28/L28)"],
     colors: ["blue"],
     description:
       "Heavyweight 15 oz selvedge denim with a vintage washed finish: natural fading, whiskering and subtle distressed details. A relaxed, worn-in look that keeps the structure of heavyweight denim. Finished with a genuine leather back patch debossed with the Stellar Studios logo. Hand wash only.",
@@ -376,7 +377,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/RonningEcommSept260107662.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/RonningEcommSept260085640.jpg",
         ],
-        soldOutSizes: ["30 R", "34 R", "28 L", "32 L"],
+        soldOutSizes: ["28 L"],
       },
     ],
     description:
@@ -527,7 +528,6 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/BLUECHECKSHIRT1.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/BLUECHECKSHIRT2.jpg",
         ],
-        soldOutSizes: ["L"],
       },
       {
         name: "Pistachio Seersucker",
