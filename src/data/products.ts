@@ -584,7 +584,6 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/shirtlayf.la.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/shirtposed.jpg",
         ],
-        soldOutSizes: ["XS"],
       },
       {
         name: "Blue Stripe",
