@@ -71,7 +71,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_B_2_2.jpg?v=1791216947",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
         ],
-        soldOutSizes: ["S", "M", "L", "XL", "3XL"],
+        soldOutSizes: ["XS", "S", "M", "L", "XL", "3XL"],
       },
     ],
     description:
@@ -265,6 +265,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_20742.jpg",
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
+    soldOutSizes: ["XS"],
     colors: ["blue"],
     description:
       "15 oz selvedge denim, hand-distressed for a worn-in look. Finished with a genuine leather back patch with a debossed Stellar Studios logo. Designed to match the Ripped Selvedge Jeans 2.0.",
