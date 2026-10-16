@@ -55,24 +55,6 @@ export const products: Product[] = [
         ],
         soldOutSizes: ["M", "L", "XL", "XXL", "3XL"],
       },
-      {
-        name: "Raw Black",
-        color: "black",
-        url: "https://www.reaven.co/products/reaven-raw-black-bootcut-denim-jeans",
-        images: [
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/PNGNEWBOOTCUTBLACKCC1.png?v=1791216966",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/PNGNEWBOOTCUTBLACKCC2.png?v=1791216965",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_B_3.jpg?v=1791216947",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/IMG_7607.jpg?v=1791219318",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/1qwr.jpg?v=1776363431",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/IMG_7601.jpg?v=1791219319",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/IMG_6691.jpg?v=1776363431",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_B_1_2.jpg?v=1791216947",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_B_2_2.jpg?v=1791216947",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
-        ],
-        soldOutSizes: ["XS", "S", "M", "L", "XL", "3XL"],
-      },
     ],
     description:
       "Reaven's signature bootcut in 14 oz denim, 100% cotton and made in Italy. The light \"Paint\" wash is treated and finished by hand, with paint flecks and distressing. Signature carabiner loop, reinforced belt loops, matte silver button and logo rivets, a debossed suede leather label and embroidered back pockets.",
@@ -132,7 +114,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_4_12ea33b5-4bcb-4093-bc11-24629c169066.jpg?v=1791236189",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_5_7f60515b-02b8-41fd-9cb4-1627a680b1ff.jpg?v=1791236189",
         ],
-        soldOutSizes: ["L"],
+        soldOutSizes: ["S", "L"],
       },
       {
         name: "Navy",
