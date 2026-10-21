@@ -496,7 +496,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/Ronning_ec2_1923511.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/Ronning_ec2_1892510.jpg",
         ],
-        soldOutSizes: ["XS", "M", "L"],
+        soldOutSizes: ["XS", "M"],
       },
       {
         name: "Blue Check",
