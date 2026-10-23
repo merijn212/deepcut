@@ -441,6 +441,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/1649/1143/files/BABY-BLUE-SEERSUCKER-SHIRT_ff3ce621-23c5-4707-89cf-a8334ca908b4.jpg",
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
+    soldOutSizes: ["XS"],
     colors: ["light-blue"],
     colorName: "Baby Blue Seersucker",
     colorways: [
@@ -496,7 +497,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/Ronning_ec2_1923511.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/Ronning_ec2_1892510.jpg",
         ],
-        soldOutSizes: ["XS", "M"],
+        soldOutSizes: ["XS", "M", "L"],
       },
       {
         name: "Blue Check",
@@ -568,6 +569,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/shirtlayf.la.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/shirtposed.jpg",
         ],
+        soldOutSizes: ["XS"],
       },
       {
         name: "Blue Stripe",
