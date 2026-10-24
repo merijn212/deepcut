@@ -54,7 +54,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_SH_2.jpg?v=1791216947",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
         ],
-        soldOutSizes: ["M", "L", "XL", "XXL", "3XL"],
+        soldOutSizes: ["M", "L", "XXL", "3XL"],
       },
     ],
     description:
@@ -226,6 +226,23 @@ export const products: Product[] = [
     sizes: ["26", "28", "30", "32", "34", "36", "38"],
     soldOutSizes: ["38"],
     colors: ["light-blue"],
+    colorways: [
+      {
+        name: "Minimalist Painter",
+        color: "multi",
+        url: "https://nomaintenance.us/products/baggy-japanese-denim-minimalist-painter",
+        images: [
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYMINIMALPAINTERFINALFRONT.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/FW26DEL5ECOMM_SHOPIFY_19.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYMINIMALPAINTERFINALDETAIL1.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYMINIMALPAINTERFINALDETAIL2.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/FW26DEL5ECOMM_SHOPIFY_20.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYMINIMALPAINTERFINALBACK.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYMINIMALPAINTERFINALDETAIL3.jpg",
+        ],
+        soldOutSizes: ["26"],
+      },
+    ],
     description:
       "14 oz Japanese selvedge denim in a relaxed, baggy fit with a light stone enzyme wash. Hand-applied paint splatters in black, white and grey give every pair its own surface. Whiskering, honeycombs behind the knees and rectangular back pockets with the signature arcuate stitch. Inspired by vintage workwear.",
     url: "https://nomaintenance.us/products/minimalist-painter-denim",
@@ -248,7 +265,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_20742.jpg",
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    soldOutSizes: ["XS"],
+    soldOutSizes: ["XS", "L"],
     colors: ["blue"],
     description:
       "15 oz selvedge denim, hand-distressed for a worn-in look. Finished with a genuine leather back patch with a debossed Stellar Studios logo. Designed to match the Ripped Selvedge Jeans 2.0.",
