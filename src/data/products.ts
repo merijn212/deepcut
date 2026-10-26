@@ -37,7 +37,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_BL_1.jpg?v=1791216947",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
         ],
-        soldOutSizes: ["3XL"],
+        soldOutSizes: ["M", "XL", "XXL", "3XL"],
       },
       {
         name: "Shinkai",
@@ -174,6 +174,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/74C6A167-7C16-4640-A293-13403D0993DF.jpg?v=1791011654",
     ],
     sizes: ["1", "2", "3"],
+    soldOutSizes: ["1"],
     colors: ["grey"],
     description:
       "A grey knit crewneck with a three-button placket at the shoulder. The smooth knit body is paired with textured ribbed raglan sleeves, finished with ribbed cuffs and hem. Relaxed, slightly cropped fit.",
