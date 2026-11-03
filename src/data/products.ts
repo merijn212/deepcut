@@ -273,7 +273,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_44722.heic?format=jpg",
     ],
     sizes: ["XS (W28/L28)", "S (W30/L30)", "M (W32/L32)", "L (W34/L34)", "XL (W36/L36)"],
-    soldOutSizes: ["XS (W28/L28)"],
+    soldOutSizes: ["XS (W28/L28)", "L (W34/L34)"],
     colors: ["blue"],
     description:
       "Heavyweight 15 oz selvedge denim with a vintage washed finish: natural fading, whiskering and subtle distressed details. A relaxed, worn-in look that keeps the structure of heavyweight denim. Finished with a genuine leather back patch debossed with the Stellar Studios logo. Hand wash only.",
@@ -521,7 +521,6 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/Ronning_ec2_1923511.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/Ronning_ec2_1892510.jpg",
         ],
-        soldOutSizes: ["XS", "M", "L", "XL"],
       },
       {
         name: "Blue Check",
@@ -593,7 +592,6 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/shirtlayf.la.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/shirtposed.jpg",
         ],
-        soldOutSizes: ["XS"],
       },
       {
         name: "Blue Stripe",
