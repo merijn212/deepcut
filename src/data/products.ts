@@ -507,7 +507,6 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/5SLATE-GREY-C_58d63c26-2056-4a79-a65e-77a9ed4e0862.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/4SLATE-GREY-C_123355d8-7dc2-47ca-a58a-b2d34ce6ecdf.jpg",
         ],
-        soldOutSizes: ["XS"],
       },
       {
         name: "Navy Check",
@@ -549,7 +548,6 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/pistachioside.png",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/pistachioback.png",
         ],
-        soldOutSizes: ["M", "L", "XL"],
       },
       {
         name: "Textured Stone",
