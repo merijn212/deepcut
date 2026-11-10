@@ -208,7 +208,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BLUEPAINTERDENIMSELVEDGE.jpg",
     ],
     sizes: ["26", "28", "30", "32", "34", "36", "38"],
-    soldOutSizes: ["38"],
+    soldOutSizes: ["28", "38"],
     colors: ["light-blue"],
     colorways: [
       {
