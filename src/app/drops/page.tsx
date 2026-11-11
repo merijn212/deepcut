@@ -36,7 +36,7 @@ export default function DropsPage() {
                 key={drop.id}
                 drop={drop}
                 brand={getBrand(drop.brand)}
-                itemCount={getItemsByDrop(drop.id).length}
+                items={getItemsByDrop(drop.id)}
                 upcoming
               />
             ))}
@@ -57,7 +57,7 @@ export default function DropsPage() {
                 key={drop.id}
                 drop={drop}
                 brand={getBrand(drop.brand)}
-                itemCount={getItemsByDrop(drop.id).length}
+                items={getItemsByDrop(drop.id)}
                 upcoming={false}
               />
             ))}

@@ -22,7 +22,7 @@ const ITEMS_DIR = join(ROOT, "public/items");
 
 const dryRun = process.argv.includes("--dry-run");
 // Zo lang na de drop blijven de previews staan, zodat er tijd is om de items toe te voegen.
-const PREVIEW_DAYS_AFTER_DROP = Number(process.env.PREVIEW_DAYS_AFTER_DROP ?? 3);
+const PREVIEW_DAYS_AFTER_DROP = Number(process.env.PREVIEW_DAYS_AFTER_DROP ?? 7);
 
 const report = { previews: [], files: [] };
 
