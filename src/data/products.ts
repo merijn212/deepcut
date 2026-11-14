@@ -21,6 +21,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
     ],
     sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
+    soldOutSizes: ["XS"],
     colors: ["light-blue"],
     colorways: [
       {
@@ -225,7 +226,23 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYMINIMALPAINTERFINALBACK.jpg",
           "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYMINIMALPAINTERFINALDETAIL3.jpg",
         ],
-        soldOutSizes: ["26", "34"],
+        soldOutSizes: ["26", "34", "36", "38"],
+      },
+      {
+        name: "Dakota Blue",
+        color: "blue",
+        url: "https://nomaintenance.us/products/baggy-japanese-denim-dakota-blue",
+        images: [
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYDAKOTABLUEFRONT.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/NoMaintenance20263886_e1075df6-cd20-4ef1-a8e0-e3399fcb7b92.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGY_DAKOTA_FRONT.png",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYDENIM-DAKOTABLUEFINALDETAIL1.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGY_DAKOTA_ECOM_BACK.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYDENIM-DAKOTABLUEFINALBACK.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYDENIM-DAKOTABLUEFINALDETAIL2.jpg",
+          "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/NoMaintenance20263894_c437112e-4110-4ebf-9abc-f61d7d1f8b27.jpg",
+        ],
+        soldOutSizes: ["26", "34", "36", "38"],
       },
     ],
     description:
@@ -250,7 +267,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_20742.jpg",
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    soldOutSizes: ["XS", "L"],
+    soldOutSizes: ["XS", "L", "XL"],
     colors: ["blue"],
     description:
       "15 oz selvedge denim, hand-distressed for a worn-in look. Finished with a genuine leather back patch with a debossed Stellar Studios logo. Designed to match the Ripped Selvedge Jeans 2.0.",
