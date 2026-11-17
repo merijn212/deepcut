@@ -226,7 +226,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYMINIMALPAINTERFINALBACK.jpg",
           "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYMINIMALPAINTERFINALDETAIL3.jpg",
         ],
-        soldOutSizes: ["26", "34", "36", "38"],
+        soldOutSizes: ["26", "28", "34", "36", "38"],
       },
       {
         name: "Dakota Blue",
