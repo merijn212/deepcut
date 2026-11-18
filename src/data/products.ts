@@ -159,7 +159,6 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/74C6A167-7C16-4640-A293-13403D0993DF.jpg?v=1791011654",
     ],
     sizes: ["1", "2", "3"],
-    soldOutSizes: ["1"],
     colors: ["grey"],
     description:
       "A grey knit crewneck with a three-button placket at the shoulder. The smooth knit body is paired with textured ribbed raglan sleeves, finished with ribbed cuffs and hem. Relaxed, slightly cropped fit.",
