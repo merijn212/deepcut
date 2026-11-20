@@ -38,7 +38,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_BL_1.jpg?v=1791216947",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
         ],
-        soldOutSizes: ["M", "L", "XL", "XXL", "3XL"],
+        soldOutSizes: ["XS", "XXL", "3XL"],
       },
     ],
     description:
@@ -100,7 +100,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_4_12ea33b5-4bcb-4093-bc11-24629c169066.jpg?v=1791236189",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_5_7f60515b-02b8-41fd-9cb4-1627a680b1ff.jpg?v=1791236189",
         ],
-        soldOutSizes: ["XS", "S", "M", "L"],
+        soldOutSizes: ["XS", "S", "L"],
       },
       {
         name: "Navy",
