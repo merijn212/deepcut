@@ -38,7 +38,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_BL_1.jpg?v=1791216947",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
         ],
-        soldOutSizes: ["XS", "XXL", "3XL"],
+        soldOutSizes: ["XS", "M", "L", "XXL", "3XL"],
       },
     ],
     description:
@@ -83,7 +83,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_4_12ea33b5-4bcb-4093-bc11-24629c169066.jpg?v=1791236189",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_5_7f60515b-02b8-41fd-9cb4-1627a680b1ff.jpg?v=1791236189",
         ],
-        soldOutSizes: ["L"],
+        soldOutSizes: ["XS", "L"],
       },
       {
         name: "Mocha",
@@ -290,7 +290,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_44722.heic?format=jpg",
     ],
     sizes: ["XS (W28/L28)", "S (W30/L30)", "M (W32/L32)", "L (W34/L34)", "XL (W36/L36)"],
-    soldOutSizes: ["XS (W28/L28)", "L (W34/L34)", "XL (W36/L36)"],
+    soldOutSizes: ["S (W30/L30)"],
     colors: ["blue"],
     description:
       "Heavyweight 15 oz selvedge denim with a vintage washed finish: natural fading, whiskering and subtle distressed details. A relaxed, worn-in look that keeps the structure of heavyweight denim. Finished with a genuine leather back patch debossed with the Stellar Studios logo. Hand wash only.",
@@ -335,6 +335,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_7617.jpg",
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
+    soldOutSizes: ["L"],
     colors: ["brown"],
     description:
       "Genuine leather jacket in rich dark brown with a naturally vintage finish. The textured surface feels worn in while still looking refined. Clean front zip, structured collar and minimal seam detailing for a timeless, versatile silhouette.",
