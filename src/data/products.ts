@@ -38,7 +38,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_BL_1.jpg?v=1791216947",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
         ],
-        soldOutSizes: ["XS", "M", "L", "XXL", "3XL"],
+        soldOutSizes: ["XS", "M", "L", "XL", "XXL", "3XL"],
       },
     ],
     description:
@@ -241,7 +241,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYDENIM-DAKOTABLUEFINALDETAIL2.jpg",
           "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/NoMaintenance20263894_c437112e-4110-4ebf-9abc-f61d7d1f8b27.jpg",
         ],
-        soldOutSizes: ["26", "34", "36", "38"],
+        soldOutSizes: ["26", "28", "36", "38"],
       },
     ],
     description:
@@ -335,7 +335,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_7617.jpg",
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    soldOutSizes: ["L"],
+    soldOutSizes: ["L", "XL"],
     colors: ["brown"],
     description:
       "Genuine leather jacket in rich dark brown with a naturally vintage finish. The textured surface feels worn in while still looking refined. Clean front zip, structured collar and minimal seam detailing for a timeless, versatile silhouette.",
