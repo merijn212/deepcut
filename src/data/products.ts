@@ -100,7 +100,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_4_12ea33b5-4bcb-4093-bc11-24629c169066.jpg?v=1791236189",
           "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_5_7f60515b-02b8-41fd-9cb4-1627a680b1ff.jpg?v=1791236189",
         ],
-        soldOutSizes: ["XS", "S", "L"],
+        soldOutSizes: ["XS", "S", "M", "L"],
       },
       {
         name: "Navy",
@@ -241,7 +241,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BAGGYDENIM-DAKOTABLUEFINALDETAIL2.jpg",
           "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/NoMaintenance20263894_c437112e-4110-4ebf-9abc-f61d7d1f8b27.jpg",
         ],
-        soldOutSizes: ["26", "28", "36", "38"],
+        soldOutSizes: ["26", "28", "34", "36", "38"],
       },
     ],
     description:
@@ -290,7 +290,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_44722.heic?format=jpg",
     ],
     sizes: ["XS (W28/L28)", "S (W30/L30)", "M (W32/L32)", "L (W34/L34)", "XL (W36/L36)"],
-    soldOutSizes: ["S (W30/L30)"],
+    soldOutSizes: ["S (W30/L30)", "M (W32/L32)"],
     colors: ["blue"],
     description:
       "Heavyweight 15 oz selvedge denim with a vintage washed finish: natural fading, whiskering and subtle distressed details. A relaxed, worn-in look that keeps the structure of heavyweight denim. Finished with a genuine leather back patch debossed with the Stellar Studios logo. Hand wash only.",
