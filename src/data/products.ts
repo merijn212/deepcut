@@ -161,6 +161,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0556/0084/0844/files/74C6A167-7C16-4640-A293-13403D0993DF.jpg?v=1791011654",
     ],
     sizes: ["1", "2", "3"],
+    soldOutSizes: ["1"],
     colors: ["grey"],
     description:
       "A grey knit crewneck with a three-button placket at the shoulder. The smooth knit body is paired with textured ribbed raglan sleeves, finished with ribbed cuffs and hem. Relaxed, slightly cropped fit.",
@@ -336,7 +337,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0859/1864/6609/files/IMG_7617.jpg",
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    soldOutSizes: ["L", "XL"],
+    soldOutSizes: ["M", "L", "XL"],
     colors: ["brown"],
     description:
       "Genuine leather jacket in rich dark brown with a naturally vintage finish. The textured surface feels worn in while still looking refined. Clean front zip, structured collar and minimal seam detailing for a timeless, versatile silhouette.",
