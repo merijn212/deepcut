@@ -23,24 +23,6 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
     soldOutSizes: ["XS"],
     colors: ["light-blue"],
-    colorways: [
-      {
-        name: "Deep Blue",
-        color: "blue",
-        url: "https://www.reaven.co/products/reaven-bootcut-denim-jeans-3",
-        images: [
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/PNGNEWBOOTCUTDEEPBLUECC1.png?v=1791216972",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/PNGNEWBOOTCUTDEEPBLUECC2.png?v=1791216971",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/IMG_7608.jpg?v=1791219319",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_BL_3.jpg?v=1791216947",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_BL_6.jpg?v=1791216948",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_BL_2.jpg?v=1791216947",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/CLEANUP_BOOTCUT_BL_1.jpg?v=1791216947",
-          "https://cdn.shopify.com/s/files/1/0595/2107/3357/files/P_10_07d8e08e-b22a-4778-a193-3fdcd4af894f.jpg?v=1791217074",
-        ],
-        soldOutSizes: ["XS", "M", "L", "XL", "XXL", "3XL"],
-      },
-    ],
     description:
       "Reaven's signature bootcut in 14 oz denim, 100% cotton and made in Italy. The light \"Paint\" wash is treated and finished by hand, with paint flecks and distressing. Signature carabiner loop, reinforced belt loops, matte silver button and logo rivets, a debossed suede leather label and embroidered back pockets.",
     url: "https://www.reaven.co/products/reaven-bootcut-denim-jeans-2",
@@ -212,7 +194,7 @@ export const products: Product[] = [
       "https://cdn.shopify.com/s/files/1/0422/9319/9005/files/BLUEPAINTERDENIMSELVEDGE.jpg",
     ],
     sizes: ["26", "28", "30", "32", "34", "36", "38"],
-    soldOutSizes: ["28", "38"],
+    soldOutSizes: ["28", "34", "36", "38"],
     colors: ["light-blue"],
     colorways: [
       {
@@ -382,7 +364,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/RonningEcommSept260107662.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/RonningEcommSept260085640.jpg",
         ],
-        soldOutSizes: ["28 L"],
+        soldOutSizes: ["28 L", "36 L"],
       },
       {
         name: "Mocha Brown",
@@ -449,6 +431,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/BLACKFATIGUEZOOMFRONT_fbf8ca3b-e0ba-4c5c-853a-b53b61a9205a.png",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/0009738-R1-35-36A_1.png",
         ],
+        soldOutSizes: ["XS"],
       },
       {
         name: "Mocha Brown",
@@ -501,6 +484,7 @@ export const products: Product[] = [
           "https://cdn.shopify.com/s/files/1/1649/1143/files/GenerativeFill5.jpg",
           "https://cdn.shopify.com/s/files/1/1649/1143/files/UntitledSession15654415.jpg",
         ],
+        soldOutSizes: ["XS"],
       },
       {
         name: "Oat Grid Seersucker",
